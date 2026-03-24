@@ -99,12 +99,12 @@ export default function SelectionBar({
                 <span className="text-[var(--color-light-gray)]">|</span>
                 <button
                   onClick={onClear}
-                  className="text-sm text-[var(--color-mid-gray)] hover:text-[var(--color-dark)] cursor-pointer"
+                  className="text-sm text-[var(--color-body)] hover:text-[var(--color-dark)] cursor-pointer"
                 >
                   Clear
                 </button>
                 <span className="text-[var(--color-light-gray)]">|</span>
-                <span className="text-sm text-[var(--color-mid-gray)]">
+                <span className="text-sm text-[var(--color-body)]">
                   {selectedIds.size} {selectedIds.size === 1 ? "pack" : "packs"} · {totalVerbs} verbs
                 </span>
               </>
@@ -139,7 +139,7 @@ export default function SelectionBar({
 
           <div className="flex-1 px-4 py-4 min-w-0">
             <p className={`text-base font-[var(--font-mono)] truncate transition-colors duration-300 ${
-              copied ? "text-[var(--color-green)]" : hasSelection ? "text-[var(--color-dark)]/70" : "text-[var(--color-mid-gray)]"
+              copied ? "text-[var(--color-green)]" : hasSelection ? "text-[var(--color-body)]" : "text-[var(--color-mid-gray)]"
             }`}>
               {copied ? "Copied!" : previewText}
             </p>

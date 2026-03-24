@@ -43,9 +43,6 @@ export default function PackCard({ pack, mode, isSelected, onToggleSelect }) {
       style={isSelected ? { backgroundColor: "rgba(217, 119, 87, 0.03)" } : {}}
       onClick={onToggleSelect}
     >
-      {/* Accent color top bar */}
-      <div className="h-1" style={{ backgroundColor: "var(--color-accent)" }} />
-
       <div className="p-6">
         {/* Pack header with checkbox */}
         <div className="flex items-start justify-between mb-4">
@@ -54,7 +51,7 @@ export default function PackCard({ pack, mode, isSelected, onToggleSelect }) {
               <span className="mr-2">{pack.emoji}</span>
               {pack.name}
             </h2>
-            <p className="text-sm text-[var(--color-mid-gray)] leading-relaxed">
+            <p className="text-sm text-[var(--color-body)] leading-relaxed">
               {pack.description}
             </p>
           </div>
@@ -80,7 +77,7 @@ export default function PackCard({ pack, mode, isSelected, onToggleSelect }) {
           <div className="flex items-center gap-2">
             <span className="text-[var(--color-accent)] text-base font-bold">✳</span>
             <p
-              className="text-sm font-[var(--font-mono)] text-[var(--color-dark)]/70 truncate transition-opacity duration-500"
+              className="text-sm font-[var(--font-mono)] text-[var(--color-dark)] truncate transition-opacity duration-500"
               key={spinIndex}
             >
               {pack.verbs[spinIndex]}...
@@ -124,7 +121,7 @@ export default function PackCard({ pack, mode, isSelected, onToggleSelect }) {
 
           <div className="flex-1 px-3 py-3 min-w-0">
             <p className={`text-sm font-[var(--font-mono)] truncate transition-colors duration-300 ${
-              copied ? "text-[var(--color-green)]" : "text-[var(--color-mid-gray)]"
+              copied ? "text-[var(--color-green)]" : "text-[var(--color-body)]"
             }`}>
               {copied
                 ? "Copied!"

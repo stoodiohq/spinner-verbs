@@ -9,7 +9,7 @@ export default function Header() {
       </div>
 
       {/* Nostalgia hook */}
-      <p className="text-xl md:text-2xl text-[var(--color-mid-gray)] leading-relaxed mb-6">
+      <p className="text-xl md:text-2xl text-[var(--color-body)] leading-relaxed mb-6">
         Remember Bacon Ipsum? Hipster Ipsum? Cupcake Ipsum?
         <br className="hidden md:block" />
         We brought that energy to Claude Code.
@@ -25,7 +25,7 @@ export default function Header() {
       </div>
 
       {/* The problem / bridge */}
-      <p className="text-base md:text-lg text-[var(--color-mid-gray)] leading-relaxed mb-12">
+      <p className="text-base md:text-lg text-[var(--color-body)] leading-relaxed mb-12">
         Claude Code shows{" "}
         <span className="font-[var(--font-mono)] text-sm text-[var(--color-accent)]">"Flibbertigibbeting..."</span>
         {" "}while it thinks. But it could show{" "}
@@ -39,7 +39,7 @@ export default function Header() {
         Pick your packs. Copy the prompt. Paste it into Claude Code.
       </p>
 
-      <p className="text-sm text-[var(--color-mid-gray)]">
+      <p className="text-sm text-[var(--color-body)]">
         Select one pack or mix several together &mdash; then copy the prompt and let Claude install them for you.
       </p>
     </header>
