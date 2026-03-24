@@ -31,15 +31,11 @@ export default function Header() {
 
       {/* CTA */}
       <p className="text-lg font-semibold text-black mb-3">
-        Pick a pack. Copy one line. Make your AI think in your language.
+        Pick your packs. Copy the prompt. Paste it into Claude Code.
       </p>
 
       <p className="text-sm text-gray-400">
-        Paste into{" "}
-        <code className="font-[var(--font-mono)] text-xs text-gray-500 bg-gray-100 px-1.5 py-0.5 rounded">
-          ~/.claude/settings.json
-        </code>
-        {" "}&mdash; that's it.
+        Select one pack or mix several together &mdash; then copy the prompt and let Claude install them for you.
       </p>
     </header>
   );
