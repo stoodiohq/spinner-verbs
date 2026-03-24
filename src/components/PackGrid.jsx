@@ -1,15 +1,21 @@
 import PackCard from "./PackCard";
 
 /**
- * Pinterest-style responsive grid of pack cards.
- * 3 columns desktop, 2 tablet, 1 mobile.
+ * Responsive grid of pack cards with multi-select support.
+ * 2 columns desktop, 1 mobile.
  */
-export default function PackGrid({ packs, mode }) {
+export default function PackGrid({ packs, mode, selectedIds, onToggleSelect }) {
   return (
-    <section className="max-w-6xl mx-auto px-6 pb-12">
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+    <section className="max-w-5xl mx-auto px-6 pb-16">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
         {packs.map((pack) => (
-          <PackCard key={pack.id} pack={pack} mode={mode} />
+          <PackCard
+            key={pack.id}
+            pack={pack}
+            mode={mode}
+            isSelected={selectedIds.has(pack.id)}
+            onToggleSelect={() => onToggleSelect(pack.id)}
+          />
         ))}
       </div>
     </section>
