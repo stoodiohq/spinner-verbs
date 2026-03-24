@@ -1,0 +1,30 @@
+# Spinner Verbs
+> Themed spinner verb packs for Claude Code
+
+Spinner Verbs (spinnerverbs.com) is a free, open-source website where developers browse themed spinner verb packs for Claude Code and install them with one click.
+
+## What are spinner verbs?
+Claude Code shows rotating "spinner verbs" in the terminal while processing — words like "Hyperspacing..." and "Flibbertigibbeting..." Since v2.1.23, users can customize these via the spinnerVerbs setting in ~/.claude/settings.json.
+
+## How to use
+1. Visit spinnerverbs.com
+2. Pick a themed pack (90s Hip Hop, Star Wars, Pirate, Bob Ross, Retro Terminal, and more)
+3. Click "Copy Script" on any pack card
+4. Paste the JSON config into ~/.claude/settings.json
+
+## Available packs
+Bacon, Hipster, Cupcake, Pirate, Gangsta, Samuel L. Jackson, 90s Hip Hop, Star Wars, Star Trek, Self-Aware AI, Corporate BS, Bob Ross, Retro Terminal
+
+## Config format
+{
+  "spinnerVerbs": {
+    "mode": "replace",
+    "verbs": ["verb1", "verb2", "verb3"]
+  }
+}
+"mode": "replace" uses only your verbs. "mode": "append" mixes yours with Claude's defaults.
+
+## Links
+- Website: https://spinnerverbs.com
+- GitHub: https://github.com/stoodio/spinner-verbs
+- MIT License

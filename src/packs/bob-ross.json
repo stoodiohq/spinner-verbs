@@ -1,0 +1,33 @@
+{
+  "id": "bob-ross",
+  "name": "Bob Ross",
+  "emoji": "🎨",
+  "description": "Happy little functions. No mistakes, just features.",
+  "tags": ["art", "painting", "chill", "wholesome"],
+  "cardImage": "/cards/bob-ross.png",
+  "accentColor": "#2E7D32",
+  "verbs": [
+    "Happy little refactoring",
+    "Beating the devil out of it",
+    "No mistakes just happy accidents",
+    "Titanium-hwite-ing",
+    "Painting some almighty trees",
+    "Just-let-it-happening",
+    "Pulling some color across",
+    "Adding a happy little friend",
+    "Van-Dyke-Browning",
+    "Making big decisions",
+    "Loading the two-inch brush",
+    "Finding a happy place for this",
+    "Giving this tree a friend",
+    "Putting a little cabin right here",
+    "Doing the fluffy clouds thing",
+    "Tap-tap-tapping in highlights",
+    "Working some Phthalo Blue in",
+    "Letting the brush do the work",
+    "Scraping with the palette knife",
+    "Mixing up some Alizarin Crimson",
+    "Liquid-hwite-ing the canvas",
+    "This is your world now"
+  ]
+}

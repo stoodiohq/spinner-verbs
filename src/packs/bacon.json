@@ -1,0 +1,33 @@
+{
+  "id": "bacon",
+  "name": "Bacon",
+  "emoji": "🥓",
+  "description": "Your terminal smells like a Texas BBQ",
+  "tags": ["food", "meat", "bbq", "cooking"],
+  "cardImage": "/cards/bacon.png",
+  "accentColor": "#E25822",
+  "verbs": [
+    "Sizzling the bacon bits",
+    "Brisket-smoking",
+    "Dry-rubbing the dependencies",
+    "Going full wagyu",
+    "Prosciutto-wrapping",
+    "Sous-viding the response",
+    "Reverse-searing this build",
+    "Marbling the wagyu",
+    "Slow-smoking over mesquite",
+    "Rendering the fat",
+    "Pulling the pork",
+    "Curing the pancetta",
+    "Charring the burnt ends",
+    "Brining overnight",
+    "Butterflying the chicken",
+    "Resting the brisket",
+    "Checking the smoke ring",
+    "Trimming the silverskin",
+    "Basting with drippings",
+    "Cracking the peppercorn crust",
+    "Hitting 203 internal",
+    "Wrapping in butcher paper"
+  ]
+}

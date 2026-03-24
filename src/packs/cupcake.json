@@ -1,0 +1,33 @@
+{
+  "id": "cupcake",
+  "name": "Cupcake",
+  "emoji": "🧁",
+  "description": "Frosted, sprinkled, and baked to mass perfection",
+  "tags": ["baking", "sweet", "dessert", "pastry"],
+  "cardImage": "/cards/cupcake.png",
+  "accentColor": "#FF69B4",
+  "verbs": [
+    "Frosting the functions",
+    "Sprinkling sugar on this bug",
+    "Batter-whipping",
+    "Red-velveting",
+    "Buttercream-piping",
+    "Tempering the chocolate",
+    "Folding the meringue",
+    "Creaming the butter",
+    "Proofing the dough",
+    "Caramelizing the crème brûlée",
+    "Glazing the doughnuts",
+    "Sifting the dry ingredients",
+    "Rolling out the fondant",
+    "Blind-baking the crust",
+    "Torching the marshmallow top",
+    "Layering the mille-feuille",
+    "Drizzling the ganache",
+    "Crimping the pie edges",
+    "Whipping to stiff peaks",
+    "Dusting with powdered sugar",
+    "Pulling spun sugar",
+    "Unmolding the panna cotta"
+  ]
+}
