@@ -3,10 +3,8 @@ export default function Header() {
     <header className="max-w-5xl mx-auto text-center pt-20 pb-6 px-6">
       {/* Logo */}
       <div className="mb-10">
-        <h1 className="text-5xl md:text-6xl font-extrabold tracking-tight text-black">
-          Spinner
-          <span className="text-[var(--color-accent)]">Verbs</span>
-          <span className="text-[var(--color-accent)]">.</span>
+        <h1 className="text-5xl md:text-7xl tracking-tight text-black" style={{ fontFamily: "'Instrument Serif', serif" }}>
+          spinner<span className="text-[var(--color-accent)]">Verbs</span><span className="text-[var(--color-accent)]">.</span>
         </h1>
       </div>
 

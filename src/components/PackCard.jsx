@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useCallback } from "react";
 import CopyButton from "./CopyButton";
 
 /**
@@ -6,6 +6,7 @@ import CopyButton from "./CopyButton";
  */
 export default function PackCard({ pack, mode, isSelected, onToggleSelect }) {
   const [copyType, setCopyType] = useState("prompt");
+  const [copied, setCopied] = useState(false);
 
   const scriptText = JSON.stringify(
     { spinnerVerbs: { mode, verbs: pack.verbs } },
@@ -18,6 +19,11 @@ export default function PackCard({ pack, mode, isSelected, onToggleSelect }) {
   const displayText = copyType === "script" ? scriptText : promptText;
 
   const previewVerbs = pack.verbs.slice(0, 4);
+
+  const handleCopy = useCallback(() => {
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  }, []);
 
   return (
     <div
@@ -68,13 +74,19 @@ export default function PackCard({ pack, mode, isSelected, onToggleSelect }) {
         </p>
       </div>
 
-      {/* Copy field — stop click propagation so selecting the card doesn't fire */}
+      {/* Copy field — flashes green on copy */}
       <div
-        className="flex items-center border border-gray-200 rounded-lg overflow-hidden bg-gray-50"
+        className={`flex items-center border rounded-lg overflow-hidden transition-all duration-300 ${
+          copied
+            ? "border-green-400 bg-green-50"
+            : "border-gray-200 bg-gray-50"
+        }`}
         onClick={(e) => e.stopPropagation()}
       >
         {/* Type selector */}
-        <div className="relative flex-shrink-0 border-r border-gray-200 bg-white">
+        <div className={`relative flex-shrink-0 border-r transition-colors duration-300 ${
+          copied ? "border-green-300 bg-green-50" : "border-gray-200 bg-white"
+        }`}>
           <select
             value={copyType}
             onChange={(e) => setCopyType(e.target.value)}
@@ -93,16 +105,22 @@ export default function PackCard({ pack, mode, isSelected, onToggleSelect }) {
 
         {/* Visible preview text */}
         <div className="flex-1 px-3 py-3 min-w-0">
-          <p className="text-sm font-[var(--font-mono)] text-gray-500 truncate">
-            {copyType === "script"
-              ? `{ "spinnerVerbs": { "mode": "${mode}", "verbs": [${pack.verbs.length}] } }`
-              : `Add these ${pack.name} spinner verbs to my settings...`}
+          <p className={`text-sm font-[var(--font-mono)] truncate transition-colors duration-300 ${
+            copied ? "text-green-600" : "text-gray-500"
+          }`}>
+            {copied
+              ? "Copied!"
+              : copyType === "script"
+                ? `{ "spinnerVerbs": { "mode": "${mode}", "verbs": [${pack.verbs.length}] } }`
+                : `Add these ${pack.name} spinner verbs to my settings...`}
           </p>
         </div>
 
         {/* Copy icon */}
-        <div className="flex-shrink-0 border-l border-gray-200">
-          <CopyButton text={displayText} />
+        <div className={`flex-shrink-0 border-l transition-colors duration-300 ${
+          copied ? "border-green-300" : "border-gray-200"
+        }`}>
+          <CopyButton text={displayText} copied={copied} onCopy={handleCopy} />
         </div>
       </div>
     </div>

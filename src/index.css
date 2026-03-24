@@ -12,6 +12,10 @@ html {
 
 body {
   background-color: #fafafa;
+  background-image:
+    linear-gradient(rgba(0, 0, 0, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 0, 0, 0.03) 1px, transparent 1px);
+  background-size: 40px 40px;
   color: #1a1a1a;
   font-family: var(--font-sans);
   min-height: 100vh;

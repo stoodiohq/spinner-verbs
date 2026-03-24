@@ -1,12 +1,10 @@
-import { useState, useCallback } from "react";
+import { useCallback } from "react";
 
 /**
  * Inline copy icon button with checkmark feedback.
- * @param {{ text: string }} props
+ * @param {{ text: string, copied: boolean, onCopy: () => void }} props
  */
-export default function CopyButton({ text }) {
-  const [copied, setCopied] = useState(false);
-
+export default function CopyButton({ text, copied, onCopy }) {
   const handleCopy = useCallback(async () => {
     try {
       await navigator.clipboard.writeText(text);
@@ -21,9 +19,8 @@ export default function CopyButton({ text }) {
       document.body.removeChild(textarea);
     }
 
-    setCopied(true);
-    setTimeout(() => setCopied(false), 2000);
-  }, [text]);
+    onCopy();
+  }, [text, onCopy]);
 
   return (
     <button
@@ -32,7 +29,7 @@ export default function CopyButton({ text }) {
       aria-label="Copy to clipboard"
     >
       {copied ? (
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="text-[var(--color-accent)]">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="text-green-500">
           <polyline points="20 6 9 17 4 12" />
         </svg>
       ) : (

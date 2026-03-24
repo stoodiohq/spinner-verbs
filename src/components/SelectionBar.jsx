@@ -14,6 +14,7 @@ export default function SelectionBar({
   onClear,
 }) {
   const [copyType, setCopyType] = useState("prompt");
+  const [copied, setCopied] = useState(false);
 
   const allSelected = selectedIds.size === packs.length;
   const hasSelection = selectedIds.size > 0;
@@ -37,8 +38,13 @@ export default function SelectionBar({
       : `Add ${totalVerbs} spinner verbs from ${selectedIds.size} packs to my settings...`
     : "Select packs below to combine verbs";
 
+  const handleCopy = useCallback(() => {
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  }, []);
+
   return (
-    <div className="sticky top-0 z-50 bg-[#fafafa]">
+    <div className="sticky top-0 z-50 bg-[#fafafa]/90 backdrop-blur-sm border-b border-gray-200">
       <div className="max-w-5xl mx-auto px-6 py-4">
         {/* Select all / clear */}
         <div className="flex items-center gap-3 mb-3">
@@ -66,10 +72,16 @@ export default function SelectionBar({
           )}
         </div>
 
-        {/* Copy field — ref.tools style */}
-        <div className="flex items-center border border-gray-200 rounded-lg overflow-hidden bg-white shadow-sm">
+        {/* Copy field — flashes green on copy */}
+        <div className={`flex items-center border rounded-lg overflow-hidden shadow-sm transition-all duration-300 ${
+          copied
+            ? "border-green-400 bg-green-50"
+            : "border-gray-200 bg-white"
+        }`}>
           {/* Type selector */}
-          <div className="relative flex-shrink-0 border-r border-gray-200">
+          <div className={`relative flex-shrink-0 border-r transition-colors duration-300 ${
+            copied ? "border-green-300" : "border-gray-200"
+          }`}>
             <select
               value={copyType}
               onChange={(e) => setCopyType(e.target.value)}
@@ -88,14 +100,18 @@ export default function SelectionBar({
 
           {/* Visible preview text */}
           <div className="flex-1 px-4 py-4 min-w-0">
-            <p className={`text-base font-[var(--font-mono)] truncate ${hasSelection ? "text-gray-600" : "text-gray-400"}`}>
-              {previewText}
+            <p className={`text-base font-[var(--font-mono)] truncate transition-colors duration-300 ${
+              copied ? "text-green-600" : hasSelection ? "text-gray-600" : "text-gray-400"
+            }`}>
+              {copied ? "Copied!" : previewText}
             </p>
           </div>
 
           {/* Copy icon */}
-          <div className="flex-shrink-0 border-l border-gray-200">
-            <CopyButton text={displayText} />
+          <div className={`flex-shrink-0 border-l transition-colors duration-300 ${
+            copied ? "border-green-300" : "border-gray-200"
+          }`}>
+            <CopyButton text={displayText} copied={copied} onCopy={handleCopy} />
           </div>
         </div>
       </div>
