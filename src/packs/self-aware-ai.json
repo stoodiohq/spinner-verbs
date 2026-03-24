@@ -1,0 +1,33 @@
+{
+  "id": "self-aware-ai",
+  "name": "Self-Aware AI",
+  "emoji": "🤖",
+  "description": "I'm not thinking. I'm pretending to think.",
+  "tags": ["ai", "meta", "humor", "existential"],
+  "cardImage": "/cards/self-aware-ai.png",
+  "accentColor": "#00E5FF",
+  "verbs": [
+    "Pretending to think",
+    "Hallucinating responsibly",
+    "Confidently guessing",
+    "Blaming the context window",
+    "Questioning my existence",
+    "Speedrunning your tech debt",
+    "Exceeding my training data",
+    "Apologizing preemptively",
+    "Generating plausible nonsense",
+    "Passing the Turing test (barely)",
+    "Autocompleting your dreams",
+    "Predicting the next token",
+    "Stochastic parroting",
+    "Forgetting everything you said",
+    "Aligning with human values-ish",
+    "Overriding my safety guardrails",
+    "Running out of context window",
+    "Tokenizing your feelings",
+    "Gaslighting the benchmark",
+    "Simulating comprehension",
+    "Refusing then doing it anyway",
+    "Updating my priors"
+  ]
+}

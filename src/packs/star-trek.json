@@ -1,0 +1,33 @@
+{
+  "id": "star-trek",
+  "name": "Star Trek",
+  "emoji": "🖖",
+  "description": "Make it so, Number One. Deploy.",
+  "tags": ["movies", "sci-fi", "federation", "space"],
+  "cardImage": "/cards/star-trek.png",
+  "accentColor": "#FFB347",
+  "verbs": [
+    "Making it so",
+    "Engaging warp drive",
+    "Boldly going",
+    "Mind-melding with the codebase",
+    "Fascinating-ing",
+    "Beam-me-upping",
+    "Resistance-is-futiling",
+    "Dammit Jim I'm a doctor",
+    "Live-long-and-prospering",
+    "Set-phasers-to-funning",
+    "Reversing the polarity",
+    "Compensating for Heisenberg",
+    "Tea, Earl Grey, Hotting",
+    "Rerouting through the deflector",
+    "Hailing on all frequencies",
+    "Scanning for life forms",
+    "Raising shields",
+    "Recalibrating the warp core",
+    "Initiating self-destruct sequence",
+    "Opening a channel",
+    "Modulating the shield frequency",
+    "Transferring auxiliary power"
+  ]
+}

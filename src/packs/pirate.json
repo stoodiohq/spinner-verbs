@@ -1,0 +1,33 @@
+{
+  "id": "pirate",
+  "name": "Pirate",
+  "emoji": "🏴‍☠️",
+  "description": "Arr, yer code be walkin' the plank",
+  "tags": ["pirate", "nautical", "adventure", "sea"],
+  "cardImage": "/cards/pirate.png",
+  "accentColor": "#DAA520",
+  "verbs": [
+    "Walking the plank",
+    "Shiver-me-timbering",
+    "Hoisting the mainsail",
+    "Plundering the repo",
+    "Swabbing the poop deck",
+    "Keelhauling this function",
+    "Firing the cannons",
+    "Burying the treasure",
+    "Splicing the mainbrace",
+    "Raising the Jolly Roger",
+    "Battening down the hatches",
+    "Charting a course to production",
+    "Loading the broadside",
+    "Scuttling the ship",
+    "Marooning this bug on an island",
+    "Pillaging the API",
+    "Running a shot across the bow",
+    "Weighing anchor",
+    "Yo-ho-hoing the deploy",
+    "Boarding the enemy vessel",
+    "Sending to Davy Jones' locker",
+    "Navigating by the stars"
+  ]
+}

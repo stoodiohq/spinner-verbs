@@ -1,0 +1,33 @@
+{
+  "id": "gangsta",
+  "name": "Gangsta",
+  "emoji": "🔫",
+  "description": "Straight outta the terminal, no cap",
+  "tags": ["street", "hip-hop", "slang", "urban"],
+  "cardImage": "/cards/gangsta.png",
+  "accentColor": "#C0C0C0",
+  "verbs": [
+    "Rollin' on dubs",
+    "Keeping it 100",
+    "Straight thuggin'",
+    "Hustling hard",
+    "Droppin' bars",
+    "Posting up on the block",
+    "Throwing up the set",
+    "Hittin' licks on this build",
+    "No cap deploying",
+    "Bussin' out the code",
+    "Sliding through the DMs",
+    "Pulling up on production",
+    "Running the trap house",
+    "Putting the team on",
+    "Getting the bag",
+    "Stacking paper",
+    "Flexing on these modules",
+    "Cooking up in the lab",
+    "Moving weight in production",
+    "Letting it ride",
+    "Catching a body on this bug",
+    "Going dummy on this deploy"
+  ]
+}

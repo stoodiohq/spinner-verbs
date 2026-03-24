@@ -1,0 +1,33 @@
+{
+  "id": "star-wars",
+  "name": "Star Wars",
+  "emoji": "⚔️",
+  "description": "Do or do not. There is no npm install.",
+  "tags": ["movies", "sci-fi", "jedi", "force"],
+  "cardImage": "/cards/star-wars.png",
+  "accentColor": "#4FC3F7",
+  "verbs": [
+    "Kessel-running in 12 parsecs",
+    "I-have-the-high-grounding",
+    "This-is-the-waying",
+    "Jedi-mind-tricking the reviewer",
+    "Do-or-do-not-there-is-no-trying",
+    "It's-a-trapping",
+    "Staying on target",
+    "Force-choking this bug",
+    "That's-no-mooning",
+    "Never-tell-me-the-oddsing",
+    "Letting the Wookiee win",
+    "Shooting first like Han",
+    "Reversing the tractor beam",
+    "Executing Order 66",
+    "Using the Force, Luke",
+    "Powering up the Death Star",
+    "Bullseyeing womp rats",
+    "Flying casual",
+    "Feeling a disturbance",
+    "Searching your feelings",
+    "Altering the deal further",
+    "Completing your training"
+  ]
+}

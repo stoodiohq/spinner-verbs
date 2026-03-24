@@ -1,0 +1,33 @@
+{
+  "id": "hipster",
+  "name": "Hipster",
+  "emoji": "☕",
+  "description": "You probably haven't deployed this before",
+  "tags": ["hipster", "artisanal", "ironic", "craft"],
+  "cardImage": "/cards/hipster.png",
+  "accentColor": "#8B7355",
+  "verbs": [
+    "Artisanally hand-crafting",
+    "Cold-brewing the code",
+    "Vinyl-pressing this deploy",
+    "You probably haven't compiled this",
+    "Sriracha-drizzling",
+    "Single-origin sourcing",
+    "Hand-lettering the variables",
+    "Fermenting the kombucha build",
+    "Thrifting vintage dependencies",
+    "Waxing the mustache",
+    "Sourcing from the farmers market",
+    "Deconstructing the avocado toast",
+    "Curating a playlist for this build",
+    "Journaling about this deploy",
+    "Pour-overing with a gooseneck",
+    "Putting it on reclaimed wood",
+    "Screen-printing the error logs",
+    "Foraging for wild mushroom data",
+    "Pickling the responses",
+    "Upcycling deprecated functions",
+    "Latte-arting a rosetta",
+    "Liked this framework before it sold out"
+  ]
+}

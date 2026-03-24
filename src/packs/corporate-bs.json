@@ -1,0 +1,33 @@
+{
+  "id": "corporate-bs",
+  "name": "Corporate BS",
+  "emoji": "💼",
+  "description": "Let's circle back on this deploy at EOD",
+  "tags": ["office", "jargon", "meetings", "corporate"],
+  "cardImage": "/cards/corporate-bs.png",
+  "accentColor": "#7986CB",
+  "verbs": [
+    "Synergizing the deliverables",
+    "Circling back aggressively",
+    "Putting a pin in it",
+    "Moving the needle",
+    "Boiling the ocean",
+    "Let's-take-this-offlining",
+    "Aligning the stakeholders",
+    "Leveraging the learnings",
+    "Parking-lotting this issue",
+    "Shifting the paradigm",
+    "Drilling down to root cause",
+    "Looping in leadership",
+    "Running it up the flagpole",
+    "Eating our own dog food",
+    "Opening the kimono",
+    "Right-sizing the headcount",
+    "Ideating at a 30,000-foot level",
+    "Low-hanging-fruiting",
+    "Pinging you per my last email",
+    "Taking this to the next level",
+    "Thought-leadering",
+    "Double-clicking on that"
+  ]
+}

@@ -1,0 +1,75 @@
+@import "tailwindcss";
+
+@theme {
+  --font-display: "Space Grotesk", sans-serif;
+  --font-mono: "JetBrains Mono", "Fira Code", monospace;
+
+  --color-dark-900: #0a0a0f;
+  --color-dark-800: #12121a;
+  --color-dark-700: #1a1a26;
+  --color-dark-600: #242433;
+  --color-dark-500: #2e2e40;
+  --color-dark-400: #3a3a50;
+
+  --color-glow-green: #39ff14;
+  --color-glow-blue: #00d4ff;
+  --color-glow-purple: #b44aff;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--color-dark-900);
+  color: #e0e0e8;
+  font-family: var(--font-mono);
+  min-height: 100vh;
+  margin: 0;
+}
+
+/* Subtle scanline overlay */
+body::after {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 9999;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(0, 0, 0, 0.03) 2px,
+    rgba(0, 0, 0, 0.03) 4px
+  );
+}
+
+/* CRT glow effect on the logo */
+.crt-glow {
+  text-shadow:
+    0 0 7px rgba(57, 255, 20, 0.3),
+    0 0 20px rgba(57, 255, 20, 0.15),
+    0 0 40px rgba(57, 255, 20, 0.08);
+}
+
+/* Card hover lift */
+.pack-card {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.pack-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
+}
+
+/* Copy button pulse */
+@keyframes copied-pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+.copied-pulse {
+  animation: copied-pulse 0.3s ease;
+}
