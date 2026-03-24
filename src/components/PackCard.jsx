@@ -2,9 +2,9 @@ import { useState } from "react";
 import CopyButton from "./CopyButton";
 
 /**
- * Individual pack card with visible copy field.
+ * Individual pack card with visible copy field and multi-select support.
  */
-export default function PackCard({ pack, mode }) {
+export default function PackCard({ pack, mode, isSelected, onToggleSelect }) {
   const [copyType, setCopyType] = useState("script");
 
   const scriptText = JSON.stringify(
@@ -20,16 +20,40 @@ export default function PackCard({ pack, mode }) {
   const previewVerbs = pack.verbs.slice(0, 4);
 
   return (
-    <div className="bg-white border border-gray-200 rounded-xl p-6 hover:border-[var(--color-accent)] hover:shadow-sm transition-all">
-      {/* Pack header */}
-      <div className="mb-5">
-        <h2 className="text-xl font-bold text-black mb-2">
-          <span className="mr-1.5">{pack.emoji}</span>
-          {pack.name}
-        </h2>
-        <p className="text-base text-gray-500 leading-relaxed">
-          {pack.description}
-        </p>
+    <div
+      className={`bg-white border-2 rounded-xl p-6 transition-all cursor-pointer ${
+        isSelected
+          ? "border-[var(--color-accent)] shadow-sm"
+          : "border-gray-200 hover:border-gray-300"
+      }`}
+      onClick={onToggleSelect}
+    >
+      {/* Pack header with checkbox */}
+      <div className="flex items-start justify-between mb-5">
+        <div className="flex-1">
+          <h2 className="text-xl font-bold text-black mb-2">
+            <span className="mr-1.5">{pack.emoji}</span>
+            {pack.name}
+          </h2>
+          <p className="text-base text-gray-500 leading-relaxed">
+            {pack.description}
+          </p>
+        </div>
+
+        {/* Checkbox */}
+        <div
+          className={`flex-shrink-0 w-5 h-5 rounded border-2 flex items-center justify-center ml-4 mt-1 transition-all ${
+            isSelected
+              ? "bg-[var(--color-accent)] border-[var(--color-accent)]"
+              : "border-gray-300"
+          }`}
+        >
+          {isSelected && (
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
+              <polyline points="20 6 9 17 4 12" />
+            </svg>
+          )}
+        </div>
       </div>
 
       {/* Preview verbs */}
@@ -44,8 +68,11 @@ export default function PackCard({ pack, mode }) {
         </p>
       </div>
 
-      {/* Copy field */}
-      <div className="flex items-center border border-gray-200 rounded-lg overflow-hidden bg-gray-50">
+      {/* Copy field — stop click propagation so selecting the card doesn't fire */}
+      <div
+        className="flex items-center border border-gray-200 rounded-lg overflow-hidden bg-gray-50"
+        onClick={(e) => e.stopPropagation()}
+      >
         {/* Type selector */}
         <div className="relative flex-shrink-0 border-r border-gray-200 bg-white">
           <select

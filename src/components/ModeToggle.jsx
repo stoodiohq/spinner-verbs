@@ -19,7 +19,7 @@ export default function ModeToggle({ mode, onToggle }) {
 
         <button
           onClick={onToggle}
-          className="relative w-14 h-7 rounded-full transition-colors duration-200 cursor-pointer focus:outline-none focus:ring-2 focus:ring-[var(--color-accent)] focus:ring-offset-2"
+          className="relative w-12 h-6 rounded-full transition-colors duration-200 cursor-pointer focus:outline-none focus:ring-2 focus:ring-[var(--color-accent)] focus:ring-offset-2"
           style={{
             backgroundColor: isReplace ? "#d1d5db" : "var(--color-accent)",
           }}
@@ -28,11 +28,9 @@ export default function ModeToggle({ mode, onToggle }) {
           aria-label="Toggle between replace and append mode"
         >
           <span
-            className="block w-5 h-5 rounded-full bg-white shadow-md transition-transform duration-200"
+            className="absolute top-1 left-1 w-4 h-4 rounded-full bg-white shadow-md transition-all duration-200"
             style={{
-              transform: isReplace
-                ? "translate(4px, 4px)"
-                : "translate(33px, 4px)",
+              left: isReplace ? "4px" : "28px",
             }}
           />
         </button>

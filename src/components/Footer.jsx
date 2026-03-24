@@ -3,13 +3,15 @@
  */
 export default function Footer() {
   return (
-    <footer className="max-w-3xl mx-auto px-6 pt-12 pb-16">
+    <footer className="max-w-5xl mx-auto px-6 pt-16 pb-16">
+      <hr className="border-gray-200 mb-16" />
+
       {/* What are spinner verbs? — SEO/LLM explainer */}
-      <section className="mb-12 text-center">
+      <section className="text-center mb-12">
         <h2 className="text-lg font-bold text-black mb-3">
           What are spinner verbs?
         </h2>
-        <p className="text-base text-gray-500 leading-relaxed max-w-2xl mx-auto">
+        <p className="text-base text-gray-500 leading-relaxed">
           Spinner verbs are the loading messages Claude Code displays while it
           processes your requests &mdash; words like &ldquo;Flibbertigibbeting...&rdquo; and
           &ldquo;Hyperspacing...&rdquo; that cycle in your terminal. Since Claude Code
@@ -25,8 +27,10 @@ export default function Footer() {
         </p>
       </section>
 
-      {/* Links */}
-      <div className="text-center space-y-4">
+      <hr className="border-gray-200 max-w-xs mx-auto mb-12" />
+
+      {/* GitHub + contribute */}
+      <div className="text-center space-y-3 mb-12">
         <p className="text-base text-gray-500">
           <a
             href="https://github.com/stoodiohq/spinner-verbs"
@@ -50,15 +54,20 @@ export default function Footer() {
             Build a pack and PR it.
           </a>
         </p>
+      </div>
 
-        <p className="text-sm text-gray-400 pt-4">
+      <hr className="border-gray-200 max-w-xs mx-auto mb-12" />
+
+      {/* Credits */}
+      <div className="text-center space-y-4">
+        <p className="text-sm text-gray-400">
           Standing on the shoulders of Bacon Ipsum, Hipster Ipsum, Cupcake Ipsum,
           and every ridiculous ipsum site that made the 2000s internet beautiful.
         </p>
 
-        <p className="text-sm text-gray-400 pt-2">
+        <p className="text-sm text-gray-400">
           Built with <span className="text-[var(--color-accent)]">&hearts;</span> by{" "}
-          <span className="font-medium text-gray-500">Stoodio</span>
+          <a href="https://www.stoodio.com" target="_blank" rel="noopener noreferrer" className="font-medium text-gray-500 hover:text-[var(--color-accent)] transition-colors">Stoodio</a>
         </p>
       </div>
     </footer>
