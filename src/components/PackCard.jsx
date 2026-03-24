@@ -44,7 +44,7 @@ export default function PackCard({ pack, mode, isSelected, onToggleSelect }) {
       onClick={onToggleSelect}
     >
       {/* Accent color top bar */}
-      <div className="h-1" style={{ backgroundColor: pack.accentColor }} />
+      <div className="h-1" style={{ backgroundColor: "var(--color-accent)" }} />
 
       <div className="p-6">
         {/* Pack header with checkbox */}
@@ -78,7 +78,7 @@ export default function PackCard({ pack, mode, isSelected, onToggleSelect }) {
         {/* Spinning verb preview */}
         <div className="mb-4 rounded-lg px-4 py-3 border border-[var(--color-light-gray)]" style={{ backgroundColor: "var(--color-light)" }}>
           <div className="flex items-center gap-2">
-            <span className="text-[var(--color-accent)] text-xs font-bold">+</span>
+            <span className="text-[var(--color-accent)] text-base font-bold">✳</span>
             <p
               className="text-sm font-[var(--font-mono)] text-[var(--color-dark)]/70 truncate transition-opacity duration-500"
               key={spinIndex}
