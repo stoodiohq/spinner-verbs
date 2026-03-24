@@ -1,30 +1,18 @@
 import { useState, useCallback } from "react";
 
 /**
- * Copy-to-clipboard button with "Copied!" feedback animation.
- * @param {{ pack: object, mode: "replace"|"append" }} props
+ * Inline copy icon button. Shows a checkmark after copying.
+ * @param {{ text: string }} props
  */
-export default function CopyButton({ pack, mode }) {
+export default function CopyButton({ text }) {
   const [copied, setCopied] = useState(false);
 
   const handleCopy = useCallback(async () => {
-    const config = JSON.stringify(
-      {
-        spinnerVerbs: {
-          mode,
-          verbs: pack.verbs,
-        },
-      },
-      null,
-      2
-    );
-
     try {
-      await navigator.clipboard.writeText(config);
+      await navigator.clipboard.writeText(text);
     } catch {
-      // Fallback for older browsers
       const textarea = document.createElement("textarea");
-      textarea.value = config;
+      textarea.value = text;
       textarea.style.position = "fixed";
       textarea.style.opacity = "0";
       document.body.appendChild(textarea);
@@ -35,22 +23,24 @@ export default function CopyButton({ pack, mode }) {
 
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
-  }, [pack.verbs, mode]);
+  }, [text]);
 
   return (
     <button
       onClick={handleCopy}
-      className={`
-        w-full py-3 px-4 rounded-lg font-mono text-sm font-semibold
-        transition-all duration-200 cursor-pointer
-        ${
-          copied
-            ? "bg-green-600 text-white copied-pulse"
-            : "bg-[var(--color-dark-500)] text-gray-200 hover:bg-[var(--color-dark-400)] hover:text-white"
-        }
-      `}
+      className="flex-shrink-0 p-2 text-gray-400 hover:text-gray-600 transition-colors cursor-pointer"
+      aria-label="Copy to clipboard"
     >
-      {copied ? "Copied! ✓" : "Copy Script"}
+      {copied ? (
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-green-500">
+          <polyline points="20 6 9 17 4 12" />
+        </svg>
+      ) : (
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          <rect x="9" y="9" width="13" height="13" rx="2" ry="2" />
+          <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+        </svg>
+      )}
     </button>
   );
 }
