@@ -6,34 +6,52 @@ export default function ModeToggle({ mode, onToggle }) {
   const isReplace = mode === "replace";
 
   return (
-    <div className="max-w-2xl mx-auto text-center pb-8 px-6">
-      <div className="inline-flex items-center gap-3 text-sm">
-        <span className={isReplace ? "text-black font-medium" : "text-gray-400"}>
+    <div className="max-w-3xl mx-auto text-center py-6 px-6">
+      <div className="inline-flex items-center gap-4 text-base">
+        <span
+          className={`transition-colors cursor-pointer ${
+            isReplace ? "text-black font-semibold" : "text-gray-400"
+          }`}
+          onClick={() => !isReplace && onToggle()}
+        >
           Replace defaults
         </span>
 
         <button
           onClick={onToggle}
-          className="relative w-10 h-5 rounded-full transition-colors duration-200 cursor-pointer focus:outline-none focus:ring-2 focus:ring-gray-300 focus:ring-offset-2"
+          className="relative w-14 h-7 rounded-full transition-colors duration-200 cursor-pointer focus:outline-none focus:ring-2 focus:ring-[var(--color-accent)] focus:ring-offset-2"
           style={{
-            backgroundColor: isReplace ? "#d1d5db" : "#1a1a1a",
+            backgroundColor: isReplace ? "#d1d5db" : "var(--color-accent)",
           }}
           role="switch"
           aria-checked={!isReplace}
           aria-label="Toggle between replace and append mode"
         >
           <span
-            className="absolute top-0.5 w-4 h-4 rounded-full bg-white shadow transition-transform duration-200"
+            className="block w-5 h-5 rounded-full bg-white shadow-md transition-transform duration-200"
             style={{
-              transform: isReplace ? "translateX(2px)" : "translateX(22px)",
+              transform: isReplace
+                ? "translate(4px, 4px)"
+                : "translate(33px, 4px)",
             }}
           />
         </button>
 
-        <span className={!isReplace ? "text-black font-medium" : "text-gray-400"}>
+        <span
+          className={`transition-colors cursor-pointer ${
+            !isReplace ? "text-black font-semibold" : "text-gray-400"
+          }`}
+          onClick={() => isReplace && onToggle()}
+        >
           Mix with defaults
         </span>
       </div>
+
+      <p className="text-sm text-gray-400 mt-2">
+        {isReplace
+          ? "Only your pack's verbs, no defaults"
+          : "Your verbs mixed with Claude's defaults"}
+      </p>
     </div>
   );
 }

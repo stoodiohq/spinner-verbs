@@ -2,9 +2,7 @@ import { useState } from "react";
 import CopyButton from "./CopyButton";
 
 /**
- * Individual pack card.
- * Shows pack name, description, preview verbs, and a visible copy field
- * with the JSON config or Claude Code prompt.
+ * Individual pack card with visible copy field.
  */
 export default function PackCard({ pack, mode }) {
   const [copyType, setCopyType] = useState("script");
@@ -19,61 +17,66 @@ export default function PackCard({ pack, mode }) {
 
   const displayText = copyType === "script" ? scriptText : promptText;
 
-  const previewVerbs = pack.verbs.slice(0, 3);
+  const previewVerbs = pack.verbs.slice(0, 4);
 
   return (
-    <div className="border border-gray-200 rounded-lg p-6 hover:border-gray-300 transition-colors">
+    <div className="bg-white border border-gray-200 rounded-xl p-6 hover:border-[var(--color-accent)] hover:shadow-sm transition-all">
       {/* Pack header */}
-      <div className="mb-4">
-        <h2 className="text-lg font-semibold text-black mb-1">
-          {pack.emoji} {pack.name}
+      <div className="mb-5">
+        <h2 className="text-xl font-bold text-black mb-2">
+          <span className="mr-1.5">{pack.emoji}</span>
+          {pack.name}
         </h2>
-        <p className="text-sm text-gray-500">
+        <p className="text-base text-gray-500 leading-relaxed">
           {pack.description}
         </p>
       </div>
 
       {/* Preview verbs */}
-      <div className="mb-4">
+      <div className="mb-5 space-y-1.5">
         {previewVerbs.map((verb, i) => (
-          <p key={i} className="text-xs font-[var(--font-mono)] text-gray-400 truncate">
+          <p key={i} className="text-sm font-[var(--font-mono)] text-gray-400 truncate">
             {verb}...
           </p>
         ))}
-        <p className="text-xs text-gray-400 mt-1">{pack.verbs.length} verbs</p>
+        <p className="text-sm text-gray-400 mt-2 font-medium">
+          {pack.verbs.length} verbs
+        </p>
       </div>
 
-      {/* Copy field — visible script/prompt with copy icon */}
-      <div className="flex items-center border border-gray-200 rounded-lg overflow-hidden">
+      {/* Copy field */}
+      <div className="flex items-center border border-gray-200 rounded-lg overflow-hidden bg-gray-50">
         {/* Type selector */}
-        <div className="relative flex-shrink-0 border-r border-gray-200">
+        <div className="relative flex-shrink-0 border-r border-gray-200 bg-white">
           <select
             value={copyType}
             onChange={(e) => setCopyType(e.target.value)}
-            className="appearance-none bg-transparent text-xs font-medium text-gray-700 pl-3 pr-7 py-3 cursor-pointer focus:outline-none"
+            className="appearance-none bg-transparent text-sm font-medium text-gray-700 pl-3 pr-8 py-3 cursor-pointer focus:outline-none"
           >
             <option value="script">script</option>
             <option value="prompt">prompt</option>
           </select>
           <svg
-            className="absolute right-2 top-1/2 -translate-y-1/2 pointer-events-none text-gray-400"
-            width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"
+            className="absolute right-2.5 top-1/2 -translate-y-1/2 pointer-events-none text-gray-400"
+            width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"
           >
             <polyline points="6 9 12 15 18 9" />
           </svg>
         </div>
 
-        {/* Visible text */}
-        <div className="flex-1 px-3 py-3 overflow-hidden">
-          <p className="text-xs font-[var(--font-mono)] text-gray-500 truncate">
+        {/* Visible preview text */}
+        <div className="flex-1 px-3 py-3 min-w-0">
+          <p className="text-sm font-[var(--font-mono)] text-gray-500 truncate">
             {copyType === "script"
-              ? `{ "spinnerVerbs": { "mode": "${mode}", "verbs": [...${pack.verbs.length}] } }`
+              ? `{ "spinnerVerbs": { "mode": "${mode}", "verbs": [${pack.verbs.length}] } }`
               : `Add these ${pack.name} spinner verbs to my settings...`}
           </p>
         </div>
 
         {/* Copy icon */}
-        <CopyButton text={displayText} />
+        <div className="flex-shrink-0 border-l border-gray-200">
+          <CopyButton text={displayText} />
+        </div>
       </div>
     </div>
   );

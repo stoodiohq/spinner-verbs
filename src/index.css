@@ -3,6 +3,7 @@
 @theme {
   --font-sans: "Inter", system-ui, -apple-system, sans-serif;
   --font-mono: "JetBrains Mono", ui-monospace, monospace;
+  --color-accent: #6C5CE7;
 }
 
 html {
@@ -10,7 +11,7 @@ html {
 }
 
 body {
-  background-color: #ffffff;
+  background-color: #fafafa;
   color: #1a1a1a;
   font-family: var(--font-sans);
   min-height: 100vh;
@@ -19,5 +20,5 @@ body {
 }
 
 ::selection {
-  background: #e0e0e0;
+  background: rgba(108, 92, 231, 0.15);
 }

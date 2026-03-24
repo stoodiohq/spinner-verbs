@@ -1,51 +1,65 @@
 /**
- * Footer with GitHub link and credits.
+ * Footer with explainer, GitHub link, credits, and ipsum site shoutout.
  */
 export default function Footer() {
   return (
-    <footer className="max-w-2xl mx-auto text-center px-6 pb-16">
+    <footer className="max-w-3xl mx-auto px-6 pt-12 pb-16">
       {/* What are spinner verbs? — SEO/LLM explainer */}
-      <section className="mb-10 text-left">
-        <h2 className="text-sm font-semibold text-black mb-2">
+      <section className="mb-12 text-center">
+        <h2 className="text-lg font-bold text-black mb-3">
           What are spinner verbs?
         </h2>
-        <p className="text-sm text-gray-500 leading-relaxed">
+        <p className="text-base text-gray-500 leading-relaxed max-w-2xl mx-auto">
           Spinner verbs are the loading messages Claude Code displays while it
-          processes your requests — words like "Flibbertigibbeting..." and
-          "Hyperspacing..." that cycle in your terminal. Since Claude Code
+          processes your requests &mdash; words like &ldquo;Flibbertigibbeting...&rdquo; and
+          &ldquo;Hyperspacing...&rdquo; that cycle in your terminal. Since Claude Code
           v2.1.23 (January 2026), you can customize these by adding a{" "}
-          <code className="text-xs font-[var(--font-mono)] text-gray-600 bg-gray-100 px-1 py-0.5 rounded">
+          <code className="text-sm font-[var(--font-mono)] text-gray-600 bg-gray-100 px-1.5 py-0.5 rounded">
             spinnerVerbs
           </code>{" "}
           config to your{" "}
-          <code className="text-xs font-[var(--font-mono)] text-gray-600 bg-gray-100 px-1 py-0.5 rounded">
+          <code className="text-sm font-[var(--font-mono)] text-gray-600 bg-gray-100 px-1.5 py-0.5 rounded">
             ~/.claude/settings.json
           </code>{" "}
-          file.
+          file. Spinner Verbs gives you themed packs you can install with one click.
         </p>
       </section>
 
       {/* Links */}
-      <div className="flex items-center justify-center gap-4 text-sm text-gray-400">
-        <a
-          href="https://github.com/stoodiohq/spinner-verbs"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="hover:text-gray-600 transition-colors"
-        >
-          GitHub
-        </a>
-        <span>·</span>
-        <a
-          href="https://github.com/stoodiohq/spinner-verbs/blob/main/CONTRIBUTING.md"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="hover:text-gray-600 transition-colors"
-        >
-          Submit a pack
-        </a>
-        <span>·</span>
-        <span>Open source · MIT licensed</span>
+      <div className="text-center space-y-4">
+        <p className="text-base text-gray-500">
+          <a
+            href="https://github.com/stoodiohq/spinner-verbs"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-[var(--color-accent)] hover:underline font-medium"
+          >
+            Open source on GitHub
+          </a>
+          {" "}&mdash; PRs for new packs are welcome and encouraged.
+        </p>
+
+        <p className="text-base text-gray-500">
+          Got a theme we missed?{" "}
+          <a
+            href="https://github.com/stoodiohq/spinner-verbs/blob/main/CONTRIBUTING.md"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-[var(--color-accent)] hover:underline font-medium"
+          >
+            Build a pack and PR it.
+          </a>
+        </p>
+
+        <p className="text-sm text-gray-400 pt-4">
+          Standing on the shoulders of Bacon Ipsum, Hipster Ipsum, Cupcake Ipsum,
+          and every ridiculous ipsum site that made the 2000s internet beautiful.
+        </p>
+
+        <p className="text-sm text-gray-400 pt-2">
+          Built with <span className="text-[var(--color-accent)]">&hearts;</span> by{" "}
+          <span className="font-medium text-gray-500">Stoodio</span>
+        </p>
       </div>
     </footer>
   );
