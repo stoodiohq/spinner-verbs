@@ -1,0 +1,33 @@
+{
+  "id": "hillbilly",
+  "name": "Hillbilly",
+  "emoji": "🤠",
+  "description": "Fixin' to deploy this thing, hold my beer",
+  "tags": ["southern", "redneck", "country", "humor"],
+  "cardImage": "/cards/hillbilly.png",
+  "accentColor": "#8B7355",
+  "verbs": [
+    "Fixin' to compile",
+    "Hold my beer and watch this",
+    "That dog won't hunt",
+    "Slower than molasses in January",
+    "Madder than a wet hen",
+    "Well butter my biscuit",
+    "Happier than a dead pig in sunshine",
+    "Knee-high to a grasshopper",
+    "Cattywampus but it works",
+    "Lord willin' and the creek don't rise",
+    "Rode hard and put up wet",
+    "Busier than a one-legged cat",
+    "Useless as a screen door on a sub",
+    "Hotter than a goat in a pepper patch",
+    "Runnin' like a scalded dog",
+    "Come hell or high water",
+    "Tough as a two-dollar steak",
+    "If it ain't broke don't fix it",
+    "Colder than a well-digger's belt",
+    "More nervous than a long-tailed cat",
+    "Pitchin' a hissy fit",
+    "Might could get 'er done"
+  ]
+}

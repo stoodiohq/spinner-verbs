@@ -1,0 +1,33 @@
+{
+  "id": "rick-and-morty",
+  "name": "Rick and Morty",
+  "emoji": "🥒",
+  "description": "Wubba lubba dub dub, this build is done",
+  "tags": ["tv", "animation", "sci-fi", "adult-swim"],
+  "cardImage": "/cards/rick-and-morty.png",
+  "accentColor": "#97CE4C",
+  "verbs": [
+    "Wubba lubba dub dub!",
+    "I'm Pickle Rick!",
+    "Get schwifty",
+    "Show me what you got",
+    "Aw geez, Rick",
+    "And that's the way the news goes",
+    "Nobody exists on purpose",
+    "Tiny Rick!",
+    "In bird culture, a dick move",
+    "Grass... tastes bad",
+    "Peace among worlds",
+    "Sometimes science is more art",
+    "I turned myself into a pickle",
+    "Existence is pain to a Meeseeks",
+    "Hit the sack, Jack",
+    "Lick lick lick my balls!",
+    "Ricky ticky tavi, biatch!",
+    "That's my one-armed man!",
+    "Don't think about it",
+    "Keep Summer safe",
+    "Infinite timelines, infinite bugs",
+    "Dissolving right before your eyes"
+  ]
+}

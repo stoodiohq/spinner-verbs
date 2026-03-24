@@ -1,0 +1,33 @@
+{
+  "id": "back-to-the-future",
+  "name": "Back to the Future",
+  "emoji": "🕐",
+  "description": "Where we're going, we don't need tests",
+  "tags": ["movies", "80s", "time-travel", "delorean"],
+  "cardImage": "/cards/back-to-the-future.png",
+  "accentColor": "#FFD700",
+  "verbs": [
+    "Great Scott!",
+    "1.21 gigawatts!",
+    "Make like a tree and get outta here",
+    "Nobody calls me chicken",
+    "Think, McFly, think!",
+    "This is heavy",
+    "If my calculations are correct",
+    "You built a time machine?!",
+    "88 miles per hour",
+    "Your kids are gonna love it",
+    "Roads? Where we're going...",
+    "Why don't you make like a tree",
+    "What are you, blind, McFly?",
+    "Are you telling me it's nuclear?",
+    "Say hi to your mom for me",
+    "Hitting 88 on the speedometer",
+    "Not thinking 4th-dimensionally",
+    "The flux capacitor is fluxing",
+    "Hello? Anybody home?",
+    "Since when can weathermen predict?",
+    "Screen door on a battleship",
+    "You guys aren't ready for that"
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "id": "stranger-things",
+  "name": "Stranger Things",
+  "emoji": "🔦",
+  "description": "Something is wrong with this codebase. Very wrong.",
+  "tags": ["tv", "netflix", "80s", "horror"],
+  "cardImage": "/cards/stranger-things.png",
+  "accentColor": "#CC0000",
+  "verbs": [
+    "Friends don't lie",
+    "Coffee and contemplation",
+    "Mouth breather",
+    "She's our friend and she's crazy",
+    "Should I stay or should I go",
+    "Stuck in the Upside Down",
+    "I dump your ass",
+    "Bitchin'",
+    "How do you like your eggs?",
+    "You're the monster",
+    "Running from the Demogorgon",
+    "Scooping at Scoops Ahoy",
+    "Eleven out of ten",
+    "WILL! WILL! CAN YOU HEAR ME?!",
+    "Pulling lights off the wall",
+    "It's a gate. And it's growing.",
+    "Son of a bitch, you're really here",
+    "The board is the board",
+    "Pretending everything is fine",
+    "One summer can change everything",
+    "I'm the one who runs toward the monster",
+    "The Mindflayer has entered the chat"
+  ]
+}

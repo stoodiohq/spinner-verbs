@@ -46,7 +46,7 @@ export default function SelectionBar({
   }, []);
 
   return (
-    <div className="sticky top-0 z-50 backdrop-blur-md border-b border-[var(--color-light-gray)] shadow-sm" style={{ backgroundColor: "rgba(250, 249, 245, 0.9)" }}>
+    <div className="sticky top-0 z-50 backdrop-blur-md" style={{ backgroundColor: "rgba(250, 249, 245, 0.95)" }}>
       <div className="max-w-5xl mx-auto px-6 py-4">
         {/* Controls row: mode toggle + select/clear */}
         <div className="flex items-center justify-between mb-3">

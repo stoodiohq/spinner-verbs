@@ -1,0 +1,33 @@
+{
+  "id": "bro",
+  "name": "Bro Ipsum",
+  "emoji": "🤙",
+  "description": "Full send on this deploy, no cap",
+  "tags": ["bro", "culture", "extreme", "dude"],
+  "cardImage": "/cards/bro.png",
+  "accentColor": "#FF6B35",
+  "verbs": [
+    "Full sending this deploy",
+    "Beast mode activated",
+    "Shredding the gnar on this code",
+    "Shotgunning this build",
+    "Let's gooooo",
+    "That's sick bro",
+    "No days off",
+    "Crushing it bro",
+    "Gains on this build",
+    "Living the dream bro",
+    "Send it broooo",
+    "Yeet this into production",
+    "Dialed in and locked on",
+    "Leg day but for code",
+    "Maxing out this PR",
+    "Pre-workout for the pipeline",
+    "Dropping in on this feature",
+    "Hitting the lip on this refactor",
+    "Bro, hold my protein shake",
+    "Absolutely shredded codebase",
+    "Raw dogging this deploy no tests",
+    "It's giving main character energy"
+  ]
+}

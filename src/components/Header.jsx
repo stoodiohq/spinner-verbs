@@ -1,6 +1,6 @@
 export default function Header() {
   return (
-    <header className="max-w-5xl mx-auto text-center pt-24 pb-8 px-6">
+    <header className="max-w-5xl mx-auto text-center pt-24 px-6">
       {/* Logo */}
       <div className="mb-12">
         <h1 className="text-5xl md:text-7xl tracking-tight text-[var(--color-dark)]" style={{ fontFamily: "'Instrument Serif', serif" }}>
@@ -34,12 +34,15 @@ export default function Header() {
         <span className="font-[var(--font-mono)] text-sm text-[var(--color-accent)]">"Kessel-running in 12 parsecs..."</span>
       </p>
 
+      {/* Divider — separates hero from the tool section */}
+      <div className="border-t border-[var(--color-light-gray)] mt-4 -mx-6" style={{ marginLeft: "calc(-50vw + 50%)", marginRight: "calc(-50vw + 50%)" }} />
+
       {/* CTA */}
-      <p className="text-lg font-semibold text-[var(--color-dark)] mb-2">
-        Pick your packs. Copy the prompt. Paste it into Claude Code.
+      <p className="text-2xl md:text-3xl font-bold text-[var(--color-dark)] mt-12 mb-3">
+        Pick your packs. Copy the prompt.<br className="hidden md:block" /> Paste it into Claude Code.
       </p>
 
-      <p className="text-sm text-[var(--color-body)]">
+      <p className="text-base text-[var(--color-body)] pb-4">
         Select one pack or mix several together &mdash; then copy the prompt and let Claude install them for you.
       </p>
     </header>

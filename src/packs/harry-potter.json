@@ -1,0 +1,33 @@
+{
+  "id": "harry-potter",
+  "name": "Harry Potter",
+  "emoji": "⚡",
+  "description": "It's LeviOsa, not LevioSA",
+  "tags": ["books", "movies", "magic", "hogwarts"],
+  "cardImage": "/cards/harry-potter.png",
+  "accentColor": "#740001",
+  "verbs": [
+    "Expecto Patronum",
+    "It's LeviOsa not LevioSA",
+    "Mischief managed",
+    "I solemnly swear I'm up to no good",
+    "Turn to page 394",
+    "After all this time? Always.",
+    "10 points to Gryffindor",
+    "Accio solution",
+    "Riddikulus",
+    "Obliviate this bug",
+    "Wingardium Leviosa",
+    "Expelliarmus",
+    "Lumos on this dark code",
+    "Not Slytherin... not Slytherin",
+    "The wand chooses the developer",
+    "Nitwit blubber oddment tweak",
+    "You're a wizard, Harry",
+    "Dobby is a free elf",
+    "Pure-blood code only",
+    "Switching to the Marauder's Map",
+    "Platform 9 and three-quarters",
+    "It does not do to dwell on bugs"
+  ]
+}

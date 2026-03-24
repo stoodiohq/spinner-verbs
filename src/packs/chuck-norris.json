@@ -1,0 +1,33 @@
+{
+  "id": "chuck-norris",
+  "name": "Chuck Norris Facts",
+  "emoji": "👊",
+  "description": "Chuck Norris doesn't deploy. The code deploys itself.",
+  "tags": ["memes", "internet", "chuck-norris", "nostalgia"],
+  "cardImage": "/cards/chuck-norris.png",
+  "accentColor": "#8B4513",
+  "verbs": [
+    "Roundhouse kicking this bug",
+    "Counting to infinity... twice",
+    "The code debugs itself out of fear",
+    "Dividing by zero successfully",
+    "Unit testing in production",
+    "Compiling with a stare",
+    "The repo pulls itself",
+    "Slam dunking the server rack",
+    "Making onions cry",
+    "Under Chuck's beard is another fist",
+    "Googling Google",
+    "Already been to Mars",
+    "Death once had a near-Chuck",
+    "Slamming a revolving door",
+    "Unscrambling an egg",
+    "Winning at Connect Four in 3 moves",
+    "Strangling you with a cordless phone",
+    "Building a snowman out of rain",
+    "Hearing sign language",
+    "Deploying on Friday without fear",
+    "Pushing to main and it just works",
+    "The stack overflows out of respect"
+  ]
+}
