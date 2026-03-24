@@ -5,7 +5,7 @@ import CopyButton from "./CopyButton";
  * Individual pack card with visible copy field and multi-select support.
  */
 export default function PackCard({ pack, mode, isSelected, onToggleSelect }) {
-  const [copyType, setCopyType] = useState("script");
+  const [copyType, setCopyType] = useState("prompt");
 
   const scriptText = JSON.stringify(
     { spinnerVerbs: { mode, verbs: pack.verbs } },

@@ -13,7 +13,7 @@ export default function SelectionBar({
   onSelectAll,
   onClear,
 }) {
-  const [copyType, setCopyType] = useState("script");
+  const [copyType, setCopyType] = useState("prompt");
 
   const allSelected = selectedIds.size === packs.length;
   const hasSelection = selectedIds.size > 0;
