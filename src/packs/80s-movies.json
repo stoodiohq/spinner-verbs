@@ -1,0 +1,33 @@
+{
+  "id": "80s-movies",
+  "name": "80s Movies",
+  "emoji": "🕶️",
+  "description": "Life moves pretty fast. If you don't stop and look around once in a while, you could miss it.",
+  "tags": ["movies", "80s", "nostalgia", "quotes"],
+  "cardImage": "/cards/80s-movies.png",
+  "accentColor": "#FF69B4",
+  "verbs": [
+    "Bueller... Bueller...",
+    "Save Ferris",
+    "Life moves pretty fast",
+    "As you wish",
+    "Inconceivable!",
+    "My name is Inigo Montoya",
+    "Have fun storming the castle",
+    "I feel the need for speed",
+    "Talk to me Goose",
+    "Who ya gonna call?",
+    "Don't cross the streams",
+    "Wax on, wax off",
+    "Sweep the leg",
+    "Yippee-ki-yay",
+    "Goonies never say die",
+    "Be excellent to each other",
+    "Nobody puts Baby in a corner",
+    "What's your damage?",
+    "Don't you forget about me",
+    "Does Barry Manilow know?",
+    "Now I have a machine gun",
+    "Long duk dong!"
+  ]
+}

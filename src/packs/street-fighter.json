@@ -1,0 +1,33 @@
+{
+  "id": "street-fighter",
+  "name": "Street Fighter II",
+  "emoji": "👊",
+  "description": "ROUND 1... FIGHT!",
+  "tags": ["games", "90s", "arcade", "fighting"],
+  "cardImage": "/cards/street-fighter.png",
+  "accentColor": "#FFD700",
+  "verbs": [
+    "Hadouken!",
+    "Shoryuken!",
+    "Sonic Boom!",
+    "Yoga Fire!",
+    "Yoga Flame!",
+    "Tiger Uppercut!",
+    "Flash Kick!",
+    "Spinning Bird Kick!",
+    "Hundred Hand Slap!",
+    "Psycho Crusher!",
+    "Tatsumaki Senpukyaku!",
+    "ROUND 1... FIGHT!",
+    "YOU WIN!",
+    "PERFECT!",
+    "K.O.!",
+    "CONTINUE?",
+    "You must defeat Sheng Long",
+    "INSERT COIN",
+    "Quarter circle forward punch",
+    "Sumo headbutt!",
+    "Down-back charging",
+    "Mashing the buttons"
+  ]
+}
