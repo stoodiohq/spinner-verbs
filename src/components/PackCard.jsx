@@ -11,7 +11,6 @@ export default function PackCard({ pack, mode, isSelected, onToggleSelect }) {
   const [spinIndex, setSpinIndex] = useState(0);
   const intervalRef = useRef(null);
 
-  // Spinning verb animation — cycles through verbs
   useEffect(() => {
     intervalRef.current = setInterval(() => {
       setSpinIndex((prev) => (prev + 1) % pack.verbs.length);
@@ -38,9 +37,10 @@ export default function PackCard({ pack, mode, isSelected, onToggleSelect }) {
     <div
       className={`bg-white rounded-xl overflow-hidden transition-all duration-200 cursor-pointer hover:shadow-md hover:-translate-y-0.5 ${
         isSelected
-          ? "ring-2 ring-[var(--color-accent)] shadow-md bg-[var(--color-accent)]/[0.03]"
-          : "border border-gray-200 hover:border-gray-300"
+          ? "ring-2 ring-[var(--color-accent)] shadow-md"
+          : "border border-[var(--color-light-gray)] hover:border-[var(--color-mid-gray)]"
       }`}
+      style={isSelected ? { backgroundColor: "rgba(217, 119, 87, 0.03)" } : {}}
       onClick={onToggleSelect}
     >
       {/* Accent color top bar */}
@@ -50,11 +50,11 @@ export default function PackCard({ pack, mode, isSelected, onToggleSelect }) {
         {/* Pack header with checkbox */}
         <div className="flex items-start justify-between mb-4">
           <div className="flex-1">
-            <h2 className="text-xl font-semibold text-black mb-1.5" style={{ fontFamily: "'Instrument Serif', serif" }}>
+            <h2 className="text-xl font-semibold text-[var(--color-dark)] mb-1.5" style={{ fontFamily: "'Instrument Serif', serif" }}>
               <span className="mr-2">{pack.emoji}</span>
               {pack.name}
             </h2>
-            <p className="text-sm text-gray-500 leading-relaxed">
+            <p className="text-sm text-[var(--color-mid-gray)] leading-relaxed">
               {pack.description}
             </p>
           </div>
@@ -64,7 +64,7 @@ export default function PackCard({ pack, mode, isSelected, onToggleSelect }) {
             className={`flex-shrink-0 w-5 h-5 rounded border-2 flex items-center justify-center ml-4 mt-1 transition-all ${
               isSelected
                 ? "bg-[var(--color-accent)] border-[var(--color-accent)]"
-                : "border-gray-300"
+                : "border-[var(--color-mid-gray)]"
             }`}
           >
             {isSelected && (
@@ -76,11 +76,11 @@ export default function PackCard({ pack, mode, isSelected, onToggleSelect }) {
         </div>
 
         {/* Spinning verb preview */}
-        <div className="mb-4 bg-gray-50 rounded-lg px-4 py-3 border border-gray-100">
+        <div className="mb-4 rounded-lg px-4 py-3 border border-[var(--color-light-gray)]" style={{ backgroundColor: "var(--color-light)" }}>
           <div className="flex items-center gap-2">
             <span className="text-[var(--color-accent)] text-xs font-bold">+</span>
             <p
-              className="text-sm font-[var(--font-mono)] text-gray-600 truncate transition-opacity duration-500"
+              className="text-sm font-[var(--font-mono)] text-[var(--color-dark)]/70 truncate transition-opacity duration-500"
               key={spinIndex}
             >
               {pack.verbs[spinIndex]}...
@@ -89,7 +89,7 @@ export default function PackCard({ pack, mode, isSelected, onToggleSelect }) {
         </div>
 
         {/* Verb count */}
-        <p className="text-xs text-gray-400 mb-4 font-medium">
+        <p className="text-xs text-[var(--color-mid-gray)] mb-4 font-medium">
           {pack.verbs.length} verbs
         </p>
 
@@ -97,24 +97,25 @@ export default function PackCard({ pack, mode, isSelected, onToggleSelect }) {
         <div
           className={`flex items-center border rounded-lg overflow-hidden transition-all duration-300 ${
             copied
-              ? "border-green-400 bg-green-50"
-              : "border-gray-200 bg-gray-50"
+              ? "border-[var(--color-green)] bg-[var(--color-green)]/5"
+              : "border-[var(--color-light-gray)]"
           }`}
+          style={!copied ? { backgroundColor: "var(--color-light)" } : {}}
           onClick={(e) => e.stopPropagation()}
         >
           <div className={`relative flex-shrink-0 border-r transition-colors duration-300 ${
-            copied ? "border-green-300 bg-green-50" : "border-gray-200 bg-white"
-          }`}>
+            copied ? "border-[var(--color-green)]/30" : "border-[var(--color-light-gray)]"
+          }`} style={!copied ? { backgroundColor: "white" } : {}}>
             <select
               value={copyType}
               onChange={(e) => setCopyType(e.target.value)}
-              className="appearance-none bg-transparent text-sm font-medium text-gray-700 pl-3 pr-8 py-3 cursor-pointer focus:outline-none"
+              className="appearance-none bg-transparent text-sm font-medium text-[var(--color-dark)] pl-3 pr-8 py-3 cursor-pointer focus:outline-none"
             >
               <option value="prompt">prompt</option>
               <option value="script">script</option>
             </select>
             <svg
-              className="absolute right-2.5 top-1/2 -translate-y-1/2 pointer-events-none text-gray-400"
+              className="absolute right-2.5 top-1/2 -translate-y-1/2 pointer-events-none text-[var(--color-mid-gray)]"
               width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"
             >
               <polyline points="6 9 12 15 18 9" />
@@ -123,7 +124,7 @@ export default function PackCard({ pack, mode, isSelected, onToggleSelect }) {
 
           <div className="flex-1 px-3 py-3 min-w-0">
             <p className={`text-sm font-[var(--font-mono)] truncate transition-colors duration-300 ${
-              copied ? "text-green-600" : "text-gray-500"
+              copied ? "text-[var(--color-green)]" : "text-[var(--color-mid-gray)]"
             }`}>
               {copied
                 ? "Copied!"
@@ -134,7 +135,7 @@ export default function PackCard({ pack, mode, isSelected, onToggleSelect }) {
           </div>
 
           <div className={`flex-shrink-0 border-l transition-colors duration-300 ${
-            copied ? "border-green-300" : "border-gray-200"
+            copied ? "border-[var(--color-green)]/30" : "border-[var(--color-light-gray)]"
           }`}>
             <CopyButton text={displayText} copied={copied} onCopy={handleCopy} />
           </div>

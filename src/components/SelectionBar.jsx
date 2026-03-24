@@ -46,7 +46,7 @@ export default function SelectionBar({
   }, []);
 
   return (
-    <div className="sticky top-0 z-50 bg-[#fafafa]/90 backdrop-blur-md border-b border-gray-200 shadow-sm">
+    <div className="sticky top-0 z-50 backdrop-blur-md border-b border-[var(--color-light-gray)] shadow-sm" style={{ backgroundColor: "rgba(250, 249, 245, 0.9)" }}>
       <div className="max-w-5xl mx-auto px-6 py-4">
         {/* Controls row: mode toggle + select/clear */}
         <div className="flex items-center justify-between mb-3">
@@ -54,7 +54,7 @@ export default function SelectionBar({
           <div className="flex items-center gap-3">
             <span
               className={`text-sm cursor-pointer transition-colors ${
-                isReplace ? "text-black font-semibold" : "text-gray-400"
+                isReplace ? "text-[var(--color-dark)] font-semibold" : "text-[var(--color-mid-gray)]"
               }`}
               onClick={() => !isReplace && onToggleMode()}
             >
@@ -64,7 +64,7 @@ export default function SelectionBar({
               onClick={onToggleMode}
               className="relative w-10 h-5 rounded-full transition-colors duration-200 cursor-pointer focus:outline-none"
               style={{
-                backgroundColor: isReplace ? "#d1d5db" : "var(--color-accent)",
+                backgroundColor: isReplace ? "var(--color-light-gray)" : "var(--color-accent)",
               }}
               role="switch"
               aria-checked={!isReplace}
@@ -77,7 +77,7 @@ export default function SelectionBar({
             </button>
             <span
               className={`text-sm cursor-pointer transition-colors ${
-                !isReplace ? "text-black font-semibold" : "text-gray-400"
+                !isReplace ? "text-[var(--color-dark)] font-semibold" : "text-[var(--color-mid-gray)]"
               }`}
               onClick={() => isReplace && onToggleMode()}
             >
@@ -96,15 +96,15 @@ export default function SelectionBar({
 
             {hasSelection && (
               <>
-                <span className="text-gray-300">|</span>
+                <span className="text-[var(--color-light-gray)]">|</span>
                 <button
                   onClick={onClear}
-                  className="text-sm text-gray-400 hover:text-gray-600 cursor-pointer"
+                  className="text-sm text-[var(--color-mid-gray)] hover:text-[var(--color-dark)] cursor-pointer"
                 >
                   Clear
                 </button>
-                <span className="text-gray-300">|</span>
-                <span className="text-sm text-gray-500">
+                <span className="text-[var(--color-light-gray)]">|</span>
+                <span className="text-sm text-[var(--color-mid-gray)]">
                   {selectedIds.size} {selectedIds.size === 1 ? "pack" : "packs"} · {totalVerbs} verbs
                 </span>
               </>
@@ -115,22 +115,22 @@ export default function SelectionBar({
         {/* Copy field */}
         <div className={`flex items-center border rounded-lg overflow-hidden transition-all duration-300 ${
           copied
-            ? "border-green-400 bg-green-50 shadow-sm"
-            : "border-gray-200 bg-white shadow-sm"
+            ? "border-[var(--color-green)] bg-[var(--color-green)]/5 shadow-sm"
+            : "border-[var(--color-light-gray)] bg-white shadow-sm"
         }`}>
           <div className={`relative flex-shrink-0 border-r transition-colors duration-300 ${
-            copied ? "border-green-300" : "border-gray-200"
+            copied ? "border-[var(--color-green)]/30" : "border-[var(--color-light-gray)]"
           }`}>
             <select
               value={copyType}
               onChange={(e) => setCopyType(e.target.value)}
-              className="appearance-none bg-transparent text-base font-medium text-gray-700 pl-4 pr-9 py-4 cursor-pointer focus:outline-none"
+              className="appearance-none bg-transparent text-base font-medium text-[var(--color-dark)] pl-4 pr-9 py-4 cursor-pointer focus:outline-none"
             >
               <option value="prompt">prompt</option>
               <option value="script">script</option>
             </select>
             <svg
-              className="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none text-gray-400"
+              className="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none text-[var(--color-mid-gray)]"
               width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"
             >
               <polyline points="6 9 12 15 18 9" />
@@ -139,14 +139,14 @@ export default function SelectionBar({
 
           <div className="flex-1 px-4 py-4 min-w-0">
             <p className={`text-base font-[var(--font-mono)] truncate transition-colors duration-300 ${
-              copied ? "text-green-600" : hasSelection ? "text-gray-600" : "text-gray-400"
+              copied ? "text-[var(--color-green)]" : hasSelection ? "text-[var(--color-dark)]/70" : "text-[var(--color-mid-gray)]"
             }`}>
               {copied ? "Copied!" : previewText}
             </p>
           </div>
 
           <div className={`flex-shrink-0 border-l transition-colors duration-300 ${
-            copied ? "border-green-300" : "border-gray-200"
+            copied ? "border-[var(--color-green)]/30" : "border-[var(--color-light-gray)]"
           }`}>
             <CopyButton text={displayText} copied={copied} onCopy={handleCopy} />
           </div>
