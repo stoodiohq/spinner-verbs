@@ -1,12 +1,23 @@
-import { useState, useCallback } from "react";
+import { useState, useCallback, useEffect, useRef } from "react";
 import CopyButton from "./CopyButton";
 
 /**
- * Individual pack card with visible copy field and multi-select support.
+ * Individual pack card with accent color, spinning verb preview,
+ * hover lift, and copy field.
  */
 export default function PackCard({ pack, mode, isSelected, onToggleSelect }) {
   const [copyType, setCopyType] = useState("prompt");
   const [copied, setCopied] = useState(false);
+  const [spinIndex, setSpinIndex] = useState(0);
+  const intervalRef = useRef(null);
+
+  // Spinning verb animation — cycles through verbs
+  useEffect(() => {
+    intervalRef.current = setInterval(() => {
+      setSpinIndex((prev) => (prev + 1) % pack.verbs.length);
+    }, 2000);
+    return () => clearInterval(intervalRef.current);
+  }, [pack.verbs.length]);
 
   const scriptText = JSON.stringify(
     { spinnerVerbs: { mode, verbs: pack.verbs } },
@@ -18,8 +29,6 @@ export default function PackCard({ pack, mode, isSelected, onToggleSelect }) {
 
   const displayText = copyType === "script" ? scriptText : promptText;
 
-  const previewVerbs = pack.verbs.slice(0, 4);
-
   const handleCopy = useCallback(() => {
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
@@ -27,100 +36,108 @@ export default function PackCard({ pack, mode, isSelected, onToggleSelect }) {
 
   return (
     <div
-      className={`bg-white border-2 rounded-xl p-6 transition-all cursor-pointer ${
+      className={`bg-white rounded-xl overflow-hidden transition-all duration-200 cursor-pointer hover:shadow-md hover:-translate-y-0.5 ${
         isSelected
-          ? "border-[var(--color-accent)] shadow-sm"
-          : "border-gray-200 hover:border-gray-300"
+          ? "ring-2 ring-[var(--color-accent)] shadow-md bg-[var(--color-accent)]/[0.03]"
+          : "border border-gray-200 hover:border-gray-300"
       }`}
       onClick={onToggleSelect}
     >
-      {/* Pack header with checkbox */}
-      <div className="flex items-start justify-between mb-5">
-        <div className="flex-1">
-          <h2 className="text-xl font-bold text-black mb-2">
-            <span className="mr-1.5">{pack.emoji}</span>
-            {pack.name}
-          </h2>
-          <p className="text-base text-gray-500 leading-relaxed">
-            {pack.description}
-          </p>
+      {/* Accent color top bar */}
+      <div className="h-1" style={{ backgroundColor: pack.accentColor }} />
+
+      <div className="p-6">
+        {/* Pack header with checkbox */}
+        <div className="flex items-start justify-between mb-4">
+          <div className="flex-1">
+            <h2 className="text-xl font-semibold text-black mb-1.5" style={{ fontFamily: "'Instrument Serif', serif" }}>
+              <span className="mr-2">{pack.emoji}</span>
+              {pack.name}
+            </h2>
+            <p className="text-sm text-gray-500 leading-relaxed">
+              {pack.description}
+            </p>
+          </div>
+
+          {/* Checkbox */}
+          <div
+            className={`flex-shrink-0 w-5 h-5 rounded border-2 flex items-center justify-center ml-4 mt-1 transition-all ${
+              isSelected
+                ? "bg-[var(--color-accent)] border-[var(--color-accent)]"
+                : "border-gray-300"
+            }`}
+          >
+            {isSelected && (
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
+                <polyline points="20 6 9 17 4 12" />
+              </svg>
+            )}
+          </div>
         </div>
 
-        {/* Checkbox */}
-        <div
-          className={`flex-shrink-0 w-5 h-5 rounded border-2 flex items-center justify-center ml-4 mt-1 transition-all ${
-            isSelected
-              ? "bg-[var(--color-accent)] border-[var(--color-accent)]"
-              : "border-gray-300"
-          }`}
-        >
-          {isSelected && (
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
-              <polyline points="20 6 9 17 4 12" />
-            </svg>
-          )}
+        {/* Spinning verb preview */}
+        <div className="mb-4 bg-gray-50 rounded-lg px-4 py-3 border border-gray-100">
+          <div className="flex items-center gap-2">
+            <span className="text-[var(--color-accent)] text-xs font-bold">+</span>
+            <p
+              className="text-sm font-[var(--font-mono)] text-gray-600 truncate transition-opacity duration-500"
+              key={spinIndex}
+            >
+              {pack.verbs[spinIndex]}...
+            </p>
+          </div>
         </div>
-      </div>
 
-      {/* Preview verbs */}
-      <div className="mb-5 space-y-1.5">
-        {previewVerbs.map((verb, i) => (
-          <p key={i} className="text-sm font-[var(--font-mono)] text-gray-400 truncate">
-            {verb}...
-          </p>
-        ))}
-        <p className="text-sm text-gray-400 mt-2 font-medium">
+        {/* Verb count */}
+        <p className="text-xs text-gray-400 mb-4 font-medium">
           {pack.verbs.length} verbs
         </p>
-      </div>
 
-      {/* Copy field — flashes green on copy */}
-      <div
-        className={`flex items-center border rounded-lg overflow-hidden transition-all duration-300 ${
-          copied
-            ? "border-green-400 bg-green-50"
-            : "border-gray-200 bg-gray-50"
-        }`}
-        onClick={(e) => e.stopPropagation()}
-      >
-        {/* Type selector */}
-        <div className={`relative flex-shrink-0 border-r transition-colors duration-300 ${
-          copied ? "border-green-300 bg-green-50" : "border-gray-200 bg-white"
-        }`}>
-          <select
-            value={copyType}
-            onChange={(e) => setCopyType(e.target.value)}
-            className="appearance-none bg-transparent text-sm font-medium text-gray-700 pl-3 pr-8 py-3 cursor-pointer focus:outline-none"
-          >
-            <option value="script">script</option>
-            <option value="prompt">prompt</option>
-          </select>
-          <svg
-            className="absolute right-2.5 top-1/2 -translate-y-1/2 pointer-events-none text-gray-400"
-            width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"
-          >
-            <polyline points="6 9 12 15 18 9" />
-          </svg>
-        </div>
-
-        {/* Visible preview text */}
-        <div className="flex-1 px-3 py-3 min-w-0">
-          <p className={`text-sm font-[var(--font-mono)] truncate transition-colors duration-300 ${
-            copied ? "text-green-600" : "text-gray-500"
+        {/* Copy field */}
+        <div
+          className={`flex items-center border rounded-lg overflow-hidden transition-all duration-300 ${
+            copied
+              ? "border-green-400 bg-green-50"
+              : "border-gray-200 bg-gray-50"
+          }`}
+          onClick={(e) => e.stopPropagation()}
+        >
+          <div className={`relative flex-shrink-0 border-r transition-colors duration-300 ${
+            copied ? "border-green-300 bg-green-50" : "border-gray-200 bg-white"
           }`}>
-            {copied
-              ? "Copied!"
-              : copyType === "script"
-                ? `{ "spinnerVerbs": { "mode": "${mode}", "verbs": [${pack.verbs.length}] } }`
-                : `Add these ${pack.name} spinner verbs to my settings...`}
-          </p>
-        </div>
+            <select
+              value={copyType}
+              onChange={(e) => setCopyType(e.target.value)}
+              className="appearance-none bg-transparent text-sm font-medium text-gray-700 pl-3 pr-8 py-3 cursor-pointer focus:outline-none"
+            >
+              <option value="prompt">prompt</option>
+              <option value="script">script</option>
+            </select>
+            <svg
+              className="absolute right-2.5 top-1/2 -translate-y-1/2 pointer-events-none text-gray-400"
+              width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"
+            >
+              <polyline points="6 9 12 15 18 9" />
+            </svg>
+          </div>
 
-        {/* Copy icon */}
-        <div className={`flex-shrink-0 border-l transition-colors duration-300 ${
-          copied ? "border-green-300" : "border-gray-200"
-        }`}>
-          <CopyButton text={displayText} copied={copied} onCopy={handleCopy} />
+          <div className="flex-1 px-3 py-3 min-w-0">
+            <p className={`text-sm font-[var(--font-mono)] truncate transition-colors duration-300 ${
+              copied ? "text-green-600" : "text-gray-500"
+            }`}>
+              {copied
+                ? "Copied!"
+                : copyType === "script"
+                  ? `{ "spinnerVerbs": { "mode": "${mode}", "verbs": [${pack.verbs.length}] } }`
+                  : `Add these ${pack.name} spinner verbs to my settings...`}
+            </p>
+          </div>
+
+          <div className={`flex-shrink-0 border-l transition-colors duration-300 ${
+            copied ? "border-green-300" : "border-gray-200"
+          }`}>
+            <CopyButton text={displayText} copied={copied} onCopy={handleCopy} />
+          </div>
         </div>
       </div>
     </div>

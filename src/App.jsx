@@ -1,6 +1,5 @@
 import { useState } from "react";
 import Header from "./components/Header";
-import ModeToggle from "./components/ModeToggle";
 import SelectionBar from "./components/SelectionBar";
 import PackGrid from "./components/PackGrid";
 import Footer from "./components/Footer";
@@ -42,12 +41,12 @@ export default function App() {
   return (
     <div className="min-h-screen">
       <Header />
-      <ModeToggle mode={mode} onToggle={toggleMode} />
       <SelectionBar
         packs={packs}
         selectedPacks={selectedPacks}
         selectedIds={selectedIds}
         mode={mode}
+        onToggleMode={toggleMode}
         onSelectAll={selectAll}
         onClear={clearSelection}
       />

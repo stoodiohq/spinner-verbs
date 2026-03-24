@@ -2,20 +2,22 @@ import { useState, useCallback } from "react";
 import CopyButton from "./CopyButton";
 
 /**
- * Sticky copy field above the pack grid — ref.tools style.
- * Shows select all/clear on left, copy field on right with script/prompt dropdown.
+ * Sticky toolbar above the pack grid.
+ * Combines mode toggle, select all/clear, and copy field into one unit.
  */
 export default function SelectionBar({
   packs,
   selectedPacks,
   selectedIds,
   mode,
+  onToggleMode,
   onSelectAll,
   onClear,
 }) {
   const [copyType, setCopyType] = useState("prompt");
   const [copied, setCopied] = useState(false);
 
+  const isReplace = mode === "replace";
   const allSelected = selectedIds.size === packs.length;
   const hasSelection = selectedIds.size > 0;
   const totalVerbs = selectedPacks.reduce((sum, p) => sum + p.verbs.length, 0);
@@ -44,41 +46,78 @@ export default function SelectionBar({
   }, []);
 
   return (
-    <div className="sticky top-0 z-50 bg-[#fafafa]/90 backdrop-blur-sm border-b border-gray-200">
+    <div className="sticky top-0 z-50 bg-[#fafafa]/90 backdrop-blur-md border-b border-gray-200 shadow-sm">
       <div className="max-w-5xl mx-auto px-6 py-4">
-        {/* Select all / clear */}
-        <div className="flex items-center gap-3 mb-3">
-          <button
-            onClick={onSelectAll}
-            className="text-sm font-medium text-[var(--color-accent)] hover:underline cursor-pointer"
-          >
-            {allSelected ? "Deselect all" : "Select all"}
-          </button>
+        {/* Controls row: mode toggle + select/clear */}
+        <div className="flex items-center justify-between mb-3">
+          {/* Mode toggle */}
+          <div className="flex items-center gap-3">
+            <span
+              className={`text-sm cursor-pointer transition-colors ${
+                isReplace ? "text-black font-semibold" : "text-gray-400"
+              }`}
+              onClick={() => !isReplace && onToggleMode()}
+            >
+              Replace
+            </span>
+            <button
+              onClick={onToggleMode}
+              className="relative w-10 h-5 rounded-full transition-colors duration-200 cursor-pointer focus:outline-none"
+              style={{
+                backgroundColor: isReplace ? "#d1d5db" : "var(--color-accent)",
+              }}
+              role="switch"
+              aria-checked={!isReplace}
+              aria-label="Toggle between replace and append mode"
+            >
+              <span
+                className="absolute top-0.5 left-0.5 w-4 h-4 rounded-full bg-white shadow-md transition-all duration-200"
+                style={{ left: isReplace ? "2px" : "22px" }}
+              />
+            </button>
+            <span
+              className={`text-sm cursor-pointer transition-colors ${
+                !isReplace ? "text-black font-semibold" : "text-gray-400"
+              }`}
+              onClick={() => isReplace && onToggleMode()}
+            >
+              Mix
+            </span>
+          </div>
 
-          {hasSelection && (
-            <>
-              <span className="text-gray-300">|</span>
-              <button
-                onClick={onClear}
-                className="text-sm text-gray-400 hover:text-gray-600 cursor-pointer"
-              >
-                Clear
-              </button>
-              <span className="text-gray-300">|</span>
-              <span className="text-sm text-gray-500">
-                {selectedIds.size} {selectedIds.size === 1 ? "pack" : "packs"} · {totalVerbs} verbs
-              </span>
-            </>
-          )}
+          {/* Select all / clear / count */}
+          <div className="flex items-center gap-3">
+            <button
+              onClick={onSelectAll}
+              className="text-sm font-medium text-[var(--color-accent)] hover:underline cursor-pointer"
+            >
+              {allSelected ? "Deselect all" : "Select all"}
+            </button>
+
+            {hasSelection && (
+              <>
+                <span className="text-gray-300">|</span>
+                <button
+                  onClick={onClear}
+                  className="text-sm text-gray-400 hover:text-gray-600 cursor-pointer"
+                >
+                  Clear
+                </button>
+                <span className="text-gray-300">|</span>
+                <span className="text-sm text-gray-500">
+                  {selectedIds.size} {selectedIds.size === 1 ? "pack" : "packs"} · {totalVerbs} verbs
+                </span>
+              </>
+            )}
+          </div>
         </div>
 
-        {/* Copy field — flashes green on copy */}
-        <div className={`flex items-center border rounded-lg overflow-hidden shadow-sm transition-all duration-300 ${
+        {/* Copy field */}
+        <div className={`flex items-center border rounded-lg overflow-hidden transition-all duration-300 ${
           copied
-            ? "border-green-400 bg-green-50"
-            : "border-gray-200 bg-white"
+            ? "border-green-400 bg-green-50 shadow-sm"
+            : "border-gray-200 bg-white shadow-sm"
         }`}>
-          {/* Type selector */}
           <div className={`relative flex-shrink-0 border-r transition-colors duration-300 ${
             copied ? "border-green-300" : "border-gray-200"
           }`}>
@@ -87,8 +126,8 @@ export default function SelectionBar({
               onChange={(e) => setCopyType(e.target.value)}
               className="appearance-none bg-transparent text-base font-medium text-gray-700 pl-4 pr-9 py-4 cursor-pointer focus:outline-none"
             >
-              <option value="script">script</option>
               <option value="prompt">prompt</option>
+              <option value="script">script</option>
             </select>
             <svg
               className="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none text-gray-400"
@@ -98,7 +137,6 @@ export default function SelectionBar({
             </svg>
           </div>
 
-          {/* Visible preview text */}
           <div className="flex-1 px-4 py-4 min-w-0">
             <p className={`text-base font-[var(--font-mono)] truncate transition-colors duration-300 ${
               copied ? "text-green-600" : hasSelection ? "text-gray-600" : "text-gray-400"
@@ -107,7 +145,6 @@ export default function SelectionBar({
             </p>
           </div>
 
-          {/* Copy icon */}
           <div className={`flex-shrink-0 border-l transition-colors duration-300 ${
             copied ? "border-green-300" : "border-gray-200"
           }`}>
