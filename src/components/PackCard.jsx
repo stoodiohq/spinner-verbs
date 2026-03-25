@@ -5,7 +5,7 @@ import CopyButton from "./CopyButton";
  * Individual pack card with accent color, spinning verb preview,
  * hover lift, and copy field.
  */
-export default function PackCard({ pack, mode, isSelected, onToggleSelect }) {
+export default function PackCard({ pack, isSelected, onToggleSelect }) {
   const [copyType, setCopyType] = useState("prompt");
   const [copied, setCopied] = useState(false);
   const [spinIndex, setSpinIndex] = useState(0);
@@ -18,13 +18,9 @@ export default function PackCard({ pack, mode, isSelected, onToggleSelect }) {
     return () => clearInterval(intervalRef.current);
   }, [pack.verbs.length]);
 
-  const scriptText = JSON.stringify(
-    { spinnerVerbs: { mode, verbs: pack.verbs } },
-    null,
-    2
-  );
+  const scriptText = JSON.stringify(pack.verbs, null, 2);
 
-  const promptText = `Add these spinner verbs to my ~/.claude/settings.json with mode "${mode}": ${pack.verbs.join(", ")}`;
+  const promptText = `Add these spinner verbs to my ~/.claude/settings.json. Merge them into my existing spinnerVerbs array without removing any verbs I already have. If I don't have spinnerVerbs yet, create it with mode "replace":\n\n${pack.verbs.join(", ")}`;
 
   const displayText = copyType === "script" ? scriptText : promptText;
 
@@ -126,8 +122,8 @@ export default function PackCard({ pack, mode, isSelected, onToggleSelect }) {
               {copied
                 ? "Copied!"
                 : copyType === "script"
-                  ? `{ "spinnerVerbs": { "mode": "${mode}", "verbs": [${pack.verbs.length}] } }`
-                  : `Add these ${pack.name} spinner verbs to my settings...`}
+                  ? `[${pack.verbs.length} verbs]`
+                  : `Merge ${pack.name} verbs into my settings...`}
             </p>
           </div>
 
