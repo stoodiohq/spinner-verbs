@@ -1,44 +1,52 @@
 import { useState, useCallback } from "react";
 import CopyButton from "./CopyButton";
+import { CLAUDE_DEFAULT_VERBS } from "../defaults";
 
 /**
  * Sticky toolbar above the pack grid.
- * Combines mode toggle, select all/clear, and copy field into one unit.
+ * Combines include-defaults checkbox, select all/clear, and copy field.
  */
 export default function SelectionBar({
   packs,
   selectedPacks,
   selectedIds,
-  mode,
-  onToggleMode,
+  includeDefaults,
+  onToggleDefaults,
   onSelectAll,
   onClear,
 }) {
   const [copyType, setCopyType] = useState("prompt");
   const [copied, setCopied] = useState(false);
 
-  const isReplace = mode === "replace";
   const allSelected = selectedIds.size === packs.length;
   const hasSelection = selectedIds.size > 0;
   const totalVerbs = selectedPacks.reduce((sum, p) => sum + p.verbs.length, 0);
+  const totalWithDefaults = totalVerbs + (includeDefaults ? CLAUDE_DEFAULT_VERBS.length : 0);
 
-  const allVerbs = selectedPacks.flatMap((p) => p.verbs);
+  const packVerbs = selectedPacks.flatMap((p) => p.verbs);
+  const allVerbs = includeDefaults ? [...CLAUDE_DEFAULT_VERBS, ...packVerbs] : packVerbs;
 
-  const scriptText = hasSelection
-    ? JSON.stringify({ spinnerVerbs: { mode, verbs: allVerbs } }, null, 2)
-    : "";
+  const packNames = selectedPacks.map((p) => p.name).join(", ");
 
   const promptText = hasSelection
-    ? `Add these spinner verbs to my ~/.claude/settings.json with mode "${mode}": ${allVerbs.join(", ")}`
+    ? includeDefaults
+      ? `Replace the spinnerVerbs in my ~/.claude/settings.json with these verbs (Claude defaults + ${packNames} packs). Set mode to "replace":\n\n${allVerbs.join(", ")}`
+      : `Add these spinner verbs to my ~/.claude/settings.json. Merge them into my existing spinnerVerbs array without removing any verbs I already have. If I don't have spinnerVerbs yet, create it with mode "replace":\n\n${packVerbs.join(", ")}`
+    : "";
+
+  const scriptText = hasSelection
+    ? JSON.stringify(allVerbs, null, 2)
     : "";
 
   const displayText = copyType === "script" ? scriptText : promptText;
 
   const previewText = hasSelection
     ? copyType === "script"
-      ? `{ "spinnerVerbs": { "mode": "${mode}", "verbs": [${totalVerbs} verbs from ${selectedIds.size} packs] } }`
-      : `Add ${totalVerbs} spinner verbs from ${selectedIds.size} packs to my settings...`
-    : "Select packs below to combine verbs";
+      ? `[${totalWithDefaults} verbs from ${selectedIds.size} pack${selectedIds.size === 1 ? "" : "s"}${includeDefaults ? " + defaults" : ""}]`
+      : includeDefaults
+        ? `Replace my verbs with ${totalWithDefaults} verbs (defaults + ${selectedIds.size} packs)...`
+        : `Merge ${totalVerbs} verbs from ${selectedIds.size} pack${selectedIds.size === 1 ? "" : "s"} into my settings...`
+    : "Select packs below to build your verb mix";
 
   const handleCopy = useCallback(() => {
     setCopied(true);
@@ -48,42 +56,35 @@ export default function SelectionBar({
   return (
     <div className="sticky top-0 z-50 backdrop-blur-md" style={{ backgroundColor: "rgba(250, 249, 245, 0.95)" }}>
       <div className="max-w-5xl mx-auto px-6 py-4">
-        {/* Controls row: mode toggle + select/clear */}
+        {/* Controls row: include defaults + select/clear */}
         <div className="flex items-center justify-between mb-3">
-          {/* Mode toggle */}
-          <div className="flex items-center gap-3">
-            <span
-              className={`text-sm cursor-pointer transition-colors ${
-                isReplace ? "text-[var(--color-dark)] font-semibold" : "text-[var(--color-mid-gray)]"
+          {/* Include defaults checkbox */}
+          <button
+            type="button"
+            onClick={onToggleDefaults}
+            className="flex items-center gap-2 cursor-pointer select-none group"
+          >
+            <div
+              className={`w-4 h-4 rounded border-2 flex items-center justify-center transition-all ${
+                includeDefaults
+                  ? "bg-[var(--color-accent)] border-[var(--color-accent)]"
+                  : "border-[var(--color-mid-gray)] group-hover:border-[var(--color-accent)]"
               }`}
-              onClick={() => !isReplace && onToggleMode()}
             >
-              Replace
-            </span>
-            <button
-              onClick={onToggleMode}
-              className="relative w-10 h-5 rounded-full transition-colors duration-200 cursor-pointer focus:outline-none"
-              style={{
-                backgroundColor: isReplace ? "var(--color-light-gray)" : "var(--color-accent)",
-              }}
-              role="switch"
-              aria-checked={!isReplace}
-              aria-label="Toggle between replace and append mode"
-            >
-              <span
-                className="absolute top-0.5 left-0.5 w-4 h-4 rounded-full bg-white shadow-md transition-all duration-200"
-                style={{ left: isReplace ? "2px" : "22px" }}
-              />
-            </button>
+              {includeDefaults && (
+                <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
+                  <polyline points="20 6 9 17 4 12" />
+                </svg>
+              )}
+            </div>
             <span
-              className={`text-sm cursor-pointer transition-colors ${
-                !isReplace ? "text-[var(--color-dark)] font-semibold" : "text-[var(--color-mid-gray)]"
+              className={`text-sm transition-colors ${
+                includeDefaults ? "text-[var(--color-dark)] font-medium" : "text-[var(--color-mid-gray)]"
               }`}
-              onClick={() => isReplace && onToggleMode()}
             >
-              Mix
+              Include Claude&apos;s default verbs
             </span>
-          </div>
+          </button>
 
           {/* Select all / clear / count */}
           <div className="flex items-center gap-3">
@@ -105,7 +106,7 @@ export default function SelectionBar({
                 </button>
                 <span className="text-[var(--color-light-gray)]">|</span>
                 <span className="text-sm text-[var(--color-body)]">
-                  {selectedIds.size} {selectedIds.size === 1 ? "pack" : "packs"} · {totalVerbs} verbs
+                  {selectedIds.size} {selectedIds.size === 1 ? "pack" : "packs"} · {totalWithDefaults} verbs
                 </span>
               </>
             )}

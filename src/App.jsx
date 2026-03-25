@@ -12,11 +12,8 @@ const packs = Object.values(packModules)
   .sort((a, b) => a.name.localeCompare(b.name));
 
 export default function App() {
-  const [mode, setMode] = useState("replace");
+  const [includeDefaults, setIncludeDefaults] = useState(false);
   const [selectedIds, setSelectedIds] = useState(new Set());
-
-  const toggleMode = () =>
-    setMode((prev) => (prev === "replace" ? "append" : "replace"));
 
   const toggleSelect = (id) =>
     setSelectedIds((prev) => {
@@ -45,14 +42,13 @@ export default function App() {
         packs={packs}
         selectedPacks={selectedPacks}
         selectedIds={selectedIds}
-        mode={mode}
-        onToggleMode={toggleMode}
+        includeDefaults={includeDefaults}
+        onToggleDefaults={() => setIncludeDefaults((prev) => !prev)}
         onSelectAll={selectAll}
         onClear={clearSelection}
       />
       <PackGrid
         packs={packs}
-        mode={mode}
         selectedIds={selectedIds}
         onToggleSelect={toggleSelect}
       />
