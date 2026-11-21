@@ -1,0 +1,31 @@
+{
+  "id": "ghibli",
+  "name": "Studio Ghibli",
+  "emoji": "🌿",
+  "description": "Calming the Ohmu while your code compiles",
+  "tags": ["ghibli", "anime", "miyazaki", "movies"],
+  "cardImage": "/cards/ghibli.png",
+  "accentColor": "#6BA368",
+  "verbs": [
+    "Calming the Ohmu",
+    "Gliding Above the Jungle",
+    "Shouting Balse",
+    "Catching Soot Sprites",
+    "Waiting at the Bus Stop",
+    "Catching Fireflies",
+    "Delivering Parcels",
+    "Flying as a Pig",
+    "Rewriting Country Roads as Concrete",
+    "Riding Yakul",
+    "Listening to Kodama Rattle",
+    "Scrubbing the Stink Spirit",
+    "Feeding No-Face",
+    "Becoming a Cat",
+    "Hopping Like Turnip Head",
+    "Feeding Calcifer",
+    "Running on Waves",
+    "Raising Signal Flags",
+    "Sketching Airplanes",
+    "Following the Heron"
+  ]
+}
